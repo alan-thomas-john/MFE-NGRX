@@ -9,22 +9,24 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EmployeeDashboardModule } from 'projects/employee-management/src/app/employee-dashboard/employee-dashboard.module';
+import { StoreModule } from '@ngrx/store';
+
+import { employeeReducer } from 'projects/employee-management/src/app/state/employee.reducer';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    EmployeeDashboardModule,
     ReactiveFormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot(employeeReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

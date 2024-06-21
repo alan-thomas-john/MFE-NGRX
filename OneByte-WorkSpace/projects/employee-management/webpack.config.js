@@ -11,7 +11,7 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "employeeManagement",
-    publicPath: "auto",
+    publicPath: "http://localhost:4300/",
     scriptType: "text/javascript"
   },
   optimization: {
@@ -27,13 +27,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        //library: { type: "module" },
-
-        // For remotes (please adjust)
          name: "employeeManagement",
         filename: "remoteEntry.js",
         exposes: {
             './EmployeeDashboardModule': './projects/employee-management/src/app/employee-dashboard/employee-dashboard.module.ts',
+            // './routes':'./projects/employee-management/src/app/employee-dashboard/'
         },
 
         // For hosts (please adjust)
