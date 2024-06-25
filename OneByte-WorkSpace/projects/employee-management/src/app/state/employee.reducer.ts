@@ -31,6 +31,7 @@ export const employeeReducer = createReducer(
     registrationError: null,
   })),
 
+  
   on(deleteEmployeeSuccess, (state, { emailId }) => ({
     ...state,
     employees: state.employees.filter(

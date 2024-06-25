@@ -6,6 +6,15 @@ export const addEmployee = createAction(
   props<{ employee: Employee }>()
 );
 
+export const addEmployeeSuccess = createAction(
+  '[Employee] Add Employee Success',
+  props<{ employee: Employee }>()
+);
+
+export const addEmployeeFailure = createAction(
+  '[Employee] Add Employee Failure',
+  props<{ error: any }>()
+);
 
 export const deleteEmployeeSuccess = createAction(
   '[Employee] Delete Employee Success',
