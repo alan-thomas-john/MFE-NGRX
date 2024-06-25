@@ -9,7 +9,8 @@ import { employeeReducer } from '../state/employee.reducer';
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature('employees', employeeReducer)
+    StoreModule.forFeature('employees', employeeReducer),
+    StoreModule.forRoot(employeeReducer),
     // RouterModule.forChild([
     //   {
     //     path: '',

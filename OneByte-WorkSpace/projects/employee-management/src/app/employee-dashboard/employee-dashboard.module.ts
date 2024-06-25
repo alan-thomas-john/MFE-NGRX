@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from '../registration/registration-routing.module';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { employeeReducer } from '../state/employee.reducer';
 
 
 
@@ -31,6 +33,8 @@ import { RouterModule } from '@angular/router';
       {path:'list',component:EmployeeListComponent},
 
     ]),
+    StoreModule.forRoot(employeeReducer),
+    StoreModule.forFeature('employees', employeeReducer)
 
   ],
   // exports:[EmployeeDashboardRoutingModule,RegistrationRoutingModule]
