@@ -24,7 +24,7 @@ import { employeeReducer } from 'projects/employee-management/src/app/state/empl
     ReactiveFormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
     StoreModule.forRoot(employeeReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
