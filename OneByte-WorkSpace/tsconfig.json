@@ -16,6 +16,9 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
+    "paths": {
+     
+    },
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": [

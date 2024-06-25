@@ -11,12 +11,12 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "employeeManagement",
-    publicPath: "auto",
+    publicPath: "http://localhost:4300/",
     scriptType: "text/javascript"
   },
   optimization: {
     runtimeChunk: false
-  },   
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -27,15 +27,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        //library: { type: "module" },
-
-        // For remotes (please adjust)
          name: "employeeManagement",
         filename: "remoteEntry.js",
         exposes: {
             './EmployeeDashboardModule': './projects/employee-management/src/app/employee-dashboard/employee-dashboard.module.ts',
-        },        
-        
+            // './routes':'./projects/employee-management/src/app/employee-dashboard/'
+        },
+
         // For hosts (please adjust)
         // remotes: {
         //     "oneByte": "http://localhost:4200/remoteEntry.js",
@@ -44,14 +42,16 @@ module.exports = {
         // },
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@ngrx/store-devtools": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
+
 
           ...sharedMappings.getDescriptors()
         })
-        
+
     }),
     sharedMappings.getPlugin()
   ],

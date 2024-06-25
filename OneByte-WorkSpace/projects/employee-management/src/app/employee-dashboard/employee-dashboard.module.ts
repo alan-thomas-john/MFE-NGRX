@@ -6,6 +6,8 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
 import { EmployeeDashboardComponent } from './employee-dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+// import { EmployeeDashboardRoutingModule } from './employee-dashboard-routing.module';
+// import { RegistrationRoutingModule } from '../registration/registration-routing.module';
 import { RouterModule } from '@angular/router';
 
 
@@ -21,12 +23,19 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     BrowserModule,
     ReactiveFormsModule,
+    // EmployeeDashboardRoutingModule,
+    // RegistrationRoutingModule,
     RouterModule.forChild([
       { path:'', component:EmployeeDashboardComponent },
       {path:'register',component:RegistrationComponent},
       {path:'list',component:EmployeeListComponent},
 
     ]),
-  ]
+
+  ],
+  // exports:[EmployeeDashboardRoutingModule,RegistrationRoutingModule]
+
 })
-export class EmployeeDashboardModule { }
+export class EmployeeDashboardModule {
+  // static forRoot: any;
+}

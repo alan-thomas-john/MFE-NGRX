@@ -12,13 +12,14 @@ export class ConfirmationComponent {
   message: String = '';
   newPoints!: number;
   constructor( ) { }
-  availablePoints!: number;
+ 
   ngOnInit() {
-   
+
   }
 
   onConfirm() {
     this.confirmed.emit();
+
 
   }
 

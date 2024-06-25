@@ -1,1 +1,18 @@
-<p>employee-list works!</p>
+<div class="employee-list" *ngIf="isEmpty">
+  No Employees Found!
+</div>
+<div class="employee-list" *ngIf="!isEmpty">
+  <h2>Employee List</h2>
+  <div *ngIf="(employees$ | async) as employees">
+    <ul>
+      <li *ngFor="let employee of employees">
+        <span class="employee-info">
+          Name: {{ employee.name }} <br />
+          EmailId: {{ employee.emailId }} <br />
+          Position: {{ employee.position }}
+        </span>
+        <button (click)="deleteEmployees(employee.emailId)" class="delete-button">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>
