@@ -10,9 +10,6 @@ export class EmployeeDashboardComponent {
 
   constructor(private router:Router){}
 
-
-
-
   navigateToRegistration(){
     this.router.navigate(['/register'])
   }
