@@ -1,0 +1,11 @@
+<div class="project-list">
+    <h2>Project List</h2>
+    <ul>
+      <li *ngFor="let project of projects$ | async">
+        <span class="project-view">
+          Project Name: {{ project.name }} , Duration: {{ project.duration }}
+        </span>
+        <button (click)="deleteProject(project.name)" class="delete-button">Delete</button>
+      </li>
+    </ul>
+  </div>
