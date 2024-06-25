@@ -15,6 +15,7 @@ import { projectReducer } from './state/project.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // import { EffectsModule } from '@ngrx/effects';
 // import { ProjectEffects } from './state/project.effects';
+//import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [

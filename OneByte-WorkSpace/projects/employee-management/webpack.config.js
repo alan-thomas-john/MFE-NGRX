@@ -16,7 +16,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: false
-  },   
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -34,8 +34,8 @@ module.exports = {
         filename: "remoteEntry.js",
         exposes: {
             './EmployeeDashboardModule': './projects/employee-management/src/app/employee-dashboard/employee-dashboard.module.ts',
-        },        
-        
+        },
+
         // For hosts (please adjust)
         // remotes: {
         //     "oneByte": "http://localhost:4200/remoteEntry.js",
@@ -44,14 +44,16 @@ module.exports = {
         // },
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@ngrx/store-devtools": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
+
 
           ...sharedMappings.getDescriptors()
         })
-        
+
     }),
     sharedMappings.getPlugin()
   ],
