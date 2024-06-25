@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  LoginForm: FormGroup;
+  loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar,private router:Router) {
-    this.LoginForm = this.fb.group({
-      userName: ['', Validators.required],
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar,private router:Router,private authService:AuthenticationService) {
+    this.loginForm = this.fb.group({
+      email: ['',[ Validators.required,Validators.email]],
       password: ['', Validators.required],
     });
   }
@@ -21,14 +22,24 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    if (this.LoginForm.valid) {
-      console.log(this.LoginForm.value);
-      this.snackBar.open('Login successful!', 'Close', {
-        duration: 500,
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (response: any) => {
+          console.log('Login successful', response);
+          this.snackBar.open('Login successful!', 'Close', {
+            duration: 2000,
+          });
+          this.router.navigate(['/home']);
+        },
+        error: (error: any) => {
+          console.error('Login failed', error.error.message);
+          this.snackBar.open(error.error.message, 'Close', {
+            duration: 2000,
+          });
+        },
       });
-      this.router.navigate(["/home"])
     } else {
-      this.snackBar.open('Form not  valid', 'Close', {
+      this.snackBar.open('Form not valid', 'Close', {
         duration: 2000,
       });
     }
