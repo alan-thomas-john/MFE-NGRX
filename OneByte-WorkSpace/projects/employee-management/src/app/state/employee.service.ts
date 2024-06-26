@@ -7,12 +7,15 @@ import { Employee } from './employee.model';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private apiUrl = 'http://localhost:4300';
+  private apiUrl = 'http://localhost:3000/auth/';
 
   constructor(private http: HttpClient) {}
 
   addEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(`${this.apiUrl}/add`, employee);
+    console.log("fai")
+    return this.http.post<Employee>(`${this.apiUrl}register`, employee);
+
+
   }
 
   deleteEmployee(emailId: string): Observable<{ emailId: string }> {

@@ -1,9 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import {
   addEmployee,
+  addEmployeeFailure,
+  addEmployeeSuccess,
   deleteEmployeeSuccess,
   resetSearch,
   searchEmployees,
+  errorNull,
+  employeeNull
 } from './employee.actions';
 
 import { Employee } from './employee.model';
@@ -25,13 +29,34 @@ export const initialState: EmployeeState = {
 
 export const employeeReducer = createReducer(
   initialState,
-  on(addEmployee, (state, { employee }) => ({
+  // on(addEmployee, (state, { employee }) => ({
+  //   ...state,
+  //   employees: [...state.employees, employee],
+  //   registrationError: null,
+  // })),
+
+  on(addEmployeeSuccess, (state, { employee }) => ({
     ...state,
     employees: [...state.employees, employee],
-    registrationError: null,
+    employeeDetails:employee,
+    error: null
   })),
 
-  
+  on(addEmployeeFailure, (state, { error }) => ({
+    ...state,
+    employeeDetails:null,
+    error:error
+  })),
+  on(errorNull, (state) => ({
+    ...state,
+    error:null
+  })),
+  on(employeeNull, (state) => ({
+    ...state,
+    employeeDetails:null
+  })),
+
+
   on(deleteEmployeeSuccess, (state, { emailId }) => ({
     ...state,
     employees: state.employees.filter(

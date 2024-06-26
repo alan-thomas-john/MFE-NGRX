@@ -2,7 +2,17 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { EmployeeState } from '../state/employee.reducer';
-import { addEmployee } from '../state/employee.actions';
+import {
+  addEmployee,
+  employeeNull,
+  errorNull,
+} from '../state/employee.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  selectEmployee,
+  selectEmployeeError,
+} from '../state/employee.selectors';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -15,16 +25,48 @@ export class RegistrationComponent {
 
   constructor(
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private store: Store<{ employees: EmployeeState }>
   ) {}
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
-      emailId: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       position: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    this.store
+      .select(selectEmployee)
+      .pipe(
+        tap((employee) => {
+          if (employee) {
+            this.snackBar.open(`Employee added successfully!`, 'Close', {
+              duration: 2000,
+              verticalPosition: 'top',
+            });
+            this.registrationForm.reset();
+            this.store.dispatch(employeeNull());
+          }
+        })
+      )
+      .subscribe();
+
+    this.store
+      .select(selectEmployeeError)
+      .pipe(
+        tap((error) => {
+          if (error) {
+            this.snackBar.open(`${error}`, 'Close', {
+              duration: 2000,
+              verticalPosition: 'top',
+            });
+          }
+          this.store.dispatch(errorNull());
+        })
+      )
+      .subscribe();
   }
 
   onSubmit() {
@@ -32,21 +74,22 @@ export class RegistrationComponent {
       this.openDialog = true;
       console.log(this.registrationForm.value);
     } else {
-      alert('form not valid');
+      this.snackBar.open(`form not valid`, 'Close', {
+        duration: 2000,
+        verticalPosition: 'top',
+      });
     }
   }
 
   onDialogConfirmed() {
     if (this.registrationForm.valid) {
-      this.store.dispatch(addEmployee({ employee: this.registrationForm.value }));
+      this.store.dispatch(
+        addEmployee({ employee: this.registrationForm.value })
+      );
       this.openDialog = false;
-      this.registrationForm.reset();
-      alert('registertion succesfull');
     }
   }
-
   onDialogCancelled() {
     this.openDialog = false;
-    alert('something went wrong');
   }
 }
