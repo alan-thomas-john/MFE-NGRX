@@ -72,20 +72,45 @@ const register = async (req, res) => {
         console.error('Registration error', err);
         return res.status(500).json({ message: 'Internal server error' });
     }
+};
+
+const deleteEmployee = async (req, res) => {
+    try {
+        const { id } = req.body;
+        if (!id) {
+            return res.status(400).json({ message: 'id is required' });
+        }
+        const existingUser = await User.findByPk(id);
+        if (existingUser) {
+            await User.destroy({ where: { id } })
+            return res.status(200).json({ message: "User successfully deleted" });
+        }
+        return res.status(400).json({ message: 'No employee with id' });
+    } catch (err) {
+        console.error('Registration error', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+
+const getProject = async(req,res) => {
+    try {
+        const projects = await Project.findAll();
+        console.log(projects); // Log the rows to see the user data
+        res.status(200).json(projects); // Send the user data as JSON response
+    } catch (err) {
+        console.error('Database query error', err);
+        res.status(500).send({ message: 'Internal server error' });
+    }
 }
+
 const addProject = async (req, res) => {
     try {
-        const { name, front_end,back_end, start_date, end_date } = req.body;
+        const { name, front_end, back_end, start_date, end_date } = req.body;
 
         if (!name || !front_end || !back_end || !start_date || !end_date) {
-            return res.status(400).json({ message: 'All fields  are required' });
+            return res.status(400).json({ message: 'All fields (name, front_end, back_end, start_date, end_date)  are required' });
         }
-
-        // const existingPro = await User.findOneByEmail(email);
-        // if (existingUser) {
-        //     return res.status(400).json({ message: "User already exists" });
-        // }
-        //const role = 'USER';
         const newProject = await Project.create({
             name,
             front_end,
@@ -93,11 +118,8 @@ const addProject = async (req, res) => {
             start_date,
             end_date
         });
-        // const newUser = new User(email,name, password, position,role);
         const savedProject = await newProject.save();
-
         return res.status(201).json({ message: 'Project added successfully', project: savedProject });
-
     } catch (err) {
         console.error('Registration error', err);
         return res.status(500).json({ message: 'Internal server error' });
@@ -134,14 +156,36 @@ const assignProjectToUsers = async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 }
+const deleteProject = async (req, res) => {
+    try {
+        const { id } = req.body;
+        if (!id) {
+            return res.status(400).json({ message: 'id is required' });
+        }
+        const existingProject = await Project.findByPk(id);
+        if (existingProject) {
+            const users = await User.findAll({ where: { projectId: id } });
+            await Promise.all(users.map(user => user.deleteProject()));
+            await Project.destroy({ where: { id } })
+            return res.status(200).json({ message: "Project successfully deleted" });
+        }
+        return res.status(400).json({ message: 'No project with id' });
+    } catch (err) {
+        console.error('project deletion error', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};
 
 module.exports = {
     getUsers,
     login,
     register,
     addProject,
-    assignProjectToUsers
+    assignProjectToUsers,
+    deleteEmployee,
+    deleteProject,
+    getProject
 
-    
+
 
 }
