@@ -1,0 +1,5 @@
+{
+  "employeeManagement": "http://localhost:4300/remoteEntry.js",
+  "projectManagement": "http://localhost:4201/remoteEntry.js"
+
+}

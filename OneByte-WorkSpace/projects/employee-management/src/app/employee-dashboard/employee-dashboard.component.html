@@ -1,2 +1,9 @@
-<button  routerLink="/register">registration</button>
-<button (click)="navigateToEmployeeList()">employee dashboard</button>
+<div class="dashboard-container">
+  <h1>Welcome to Employee Dashboard</h1>
+  <div class="button-group">
+    <button (click)="navigateToRegistration()">Registration</button>
+     <!-- <a routerLink='dashboard/register'>Register1</a>
+     <a href="http://localhost:4200/dashboard/register">Register2</a> -->
+    <button (click)="navigateToEmployeeList()">View Employees</button>
+  </div>
+</div>

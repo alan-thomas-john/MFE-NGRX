@@ -12,8 +12,11 @@
         <label for="position">Position:</label>
         <input id="position" formControlName="position" name="position" class="form-control" />
       </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input id="password" formControlName="password" name="password" class="form-control" required />
+      </div>
       <button type="submit" class="btn primary-btn">Register</button>
     </form>
   </div>
   <app-confirmation  *ngIf="openDialog" [employee]="registrationForm.value" (confirmed)="onDialogConfirmed()" (cancelled)="onDialogCancelled()" ></app-confirmation>
-  
