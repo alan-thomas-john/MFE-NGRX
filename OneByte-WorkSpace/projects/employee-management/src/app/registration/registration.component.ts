@@ -2,9 +2,16 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { EmployeeState } from '../state/employee.reducer';
-import { addEmployee, employeeNull, errorNull } from '../state/employee.actions';
+import {
+  addEmployee,
+  employeeNull,
+  errorNull,
+} from '../state/employee.actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { selectEmployee, selectEmployeeError } from '../state/employee.selectors';
+import {
+  selectEmployee,
+  selectEmployeeError,
+} from '../state/employee.selectors';
 import { tap } from 'rxjs';
 
 @Component({
@@ -30,31 +37,36 @@ export class RegistrationComponent {
       password: ['', Validators.required],
     });
 
-    this.store.select(selectEmployee).pipe(
-      tap(employee => {
-        if (employee) {
-          this.snackBar.open(`Employee added successfully!`, 'Close', {
-            duration: 2000,
-            verticalPosition: 'top'
-          });
-          this.registrationForm.reset();
-          this.store.dispatch(employeeNull())
-        }
-      })
-    ).subscribe();
+    this.store
+      .select(selectEmployee)
+      .pipe(
+        tap((employee) => {
+          if (employee) {
+            this.snackBar.open(`Employee added successfully!`, 'Close', {
+              duration: 2000,
+              verticalPosition: 'top',
+            });
+            this.registrationForm.reset();
+            this.store.dispatch(employeeNull());
+          }
+        })
+      )
+      .subscribe();
 
-    this.store.select(selectEmployeeError).pipe(
-      tap(error => {
-        if (error) {
-          this.snackBar.open(`Failed to add employee: ${error}`, 'Close', {
-            duration: 2000,
-            verticalPosition: 'top'
-          });
-        }
-        this.store.dispatch(errorNull())
-      })
-    ).subscribe();
-
+    this.store
+      .select(selectEmployeeError)
+      .pipe(
+        tap((error) => {
+          if (error) {
+            this.snackBar.open(`${error}`, 'Close', {
+              duration: 2000,
+              verticalPosition: 'top',
+            });
+          }
+          this.store.dispatch(errorNull());
+        })
+      )
+      .subscribe();
   }
 
   onSubmit() {
@@ -62,7 +74,10 @@ export class RegistrationComponent {
       this.openDialog = true;
       console.log(this.registrationForm.value);
     } else {
-      alert('form not valid');
+      this.snackBar.open(`form not valid`, 'Close', {
+        duration: 2000,
+        verticalPosition: 'top',
+      });
     }
   }
 
@@ -72,11 +87,6 @@ export class RegistrationComponent {
         addEmployee({ employee: this.registrationForm.value })
       );
       this.openDialog = false;
-      // this.snackBar.open('Registration successful!', 'Close', {
-      //   duration: 2000,
-      //   verticalPosition: 'top',
-      // });
-      // this.registrationForm.reset();
     }
   }
   onDialogCancelled() {
