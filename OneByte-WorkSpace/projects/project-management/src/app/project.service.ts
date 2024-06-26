@@ -9,7 +9,7 @@ import { Project } from './state/project.model';
 })
 export class ProjectService {
 
-  private apiUrl = 'https://api.example.com/projects';
+  private apiUrl = '';
 
   constructor(private http: HttpClient) { }
 

@@ -13,9 +13,8 @@ import { ProjectDashboardModule } from './project-dashboard/project-dashboard.mo
 import { StoreModule } from '@ngrx/store';
 import { projectReducer } from './state/project.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// import { EffectsModule } from '@ngrx/effects';
-// import { ProjectEffects } from './state/project.effects';
-//import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { ProjectEffects } from './state/project.effects';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot({ project: projectReducer }),
     StoreModule.forRoot({ projectState: projectReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    // EffectsModule.forRoot([ProjectEffects]),
+    EffectsModule.forRoot([ProjectEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
