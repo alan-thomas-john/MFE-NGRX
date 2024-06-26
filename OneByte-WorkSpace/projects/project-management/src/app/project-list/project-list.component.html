@@ -3,7 +3,7 @@
   <ul>
       <li *ngFor="let project of projects$ | async">
           <span class="project-view">
-              Project Name: {{ project.name }}, Frontend: {{ project.frontend }}, Backend: {{ project.backend }}, Start Date: {{ project.start_date }}, End Date: {{ project.end_date }}
+              Project Name: {{ project.name }}, Frontend: {{ project.front_end }}, Backend: {{ project.back_end }}, Start Date: {{ project.start_date }}, End Date: {{ project.end_date }}
           </span>
           <button (click)="deleteProject(project.name)" class="delete-button">Delete</button>
       </li>

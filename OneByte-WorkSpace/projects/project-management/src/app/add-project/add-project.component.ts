@@ -27,8 +27,8 @@ export class AddProjectComponent implements OnInit{
   ngOnInit() {
     this.projectForm = this.fb.group({
       name: ['', Validators.required],
-      frontend: ['', Validators.required],
-      backend: ['', Validators.required],
+      front_end: ['', Validators.required],
+      back_end: ['', Validators.required],
       start_date: ['', Validators.required],
       end_date: ['', Validators.required]
     });

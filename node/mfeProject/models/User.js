@@ -16,6 +16,9 @@ class User extends Model {
     return await this.setProject(project);
   //  return this.save();
     }
+  async  deleteProject(){
+    return await this.setProject(null);
+  }
 }
 
 User.init({
