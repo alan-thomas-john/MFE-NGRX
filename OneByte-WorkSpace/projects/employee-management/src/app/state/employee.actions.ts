@@ -22,12 +22,17 @@ export const employeeNull = createAction(
   '[Employee] Employee Null',
 );
 
+// action to set employees
+export const setEmployees = createAction(
+  '[Employee] Set Employees',
+  props<{ employees: Employee[] }>()
+);
+
+
 export const deleteEmployeeSuccess = createAction(
   '[Employee] Delete Employee Success',
   props<{ emailId: string }>()
 );
-
-
 export const searchEmployees = createAction(
   '[Employee] Search Employees',
   props<{ searchTerm: string }>()
