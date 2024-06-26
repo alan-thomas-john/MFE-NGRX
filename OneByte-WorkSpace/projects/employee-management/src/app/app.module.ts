@@ -7,6 +7,11 @@ import { EmployeeDashboardModule } from './employee-dashboard/employee-dashboard
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { employeeReducer } from './state/employee.reducer';
+import { HttpClientModule } from '@angular/common/http';
+import { EmployeeModule } from './state/employee.module';
+import { EffectsRootModule } from '@ngrx/effects';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard/employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from './registration/registration-routing.module';
 
@@ -20,9 +25,12 @@ import { employeeReducer } from './state/employee.reducer';
     FormsModule,
     StoreModule.forRoot(employeeReducer),
     ReactiveFormsModule,
+    HttpClientModule,
     EmployeeDashboardModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    StoreModule.forFeature('employees', employeeReducer)
+    EmployeeModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

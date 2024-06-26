@@ -15,6 +15,12 @@ export const addEmployeeFailure = createAction(
   '[Employee] Add Employee Failure',
   props<{ error: any }>()
 );
+export const errorNull = createAction(
+  '[Employee] Error Null',
+);
+export const employeeNull = createAction(
+  '[Employee] Employee Null',
+);
 
 export const deleteEmployeeSuccess = createAction(
   '[Employee] Delete Employee Success',
