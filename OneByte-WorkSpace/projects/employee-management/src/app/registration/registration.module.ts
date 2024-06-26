@@ -15,6 +15,7 @@ import { employeeReducer } from '../state/employee.reducer';
     CommonModule,
     ReactiveFormsModule,
     StoreModule.forRoot(employeeReducer),
+    StoreModule.forFeature('employees', employeeReducer)
 
     // RouterModule.forChild([
     //   {path :'register',component:RegistrationComponent}
