@@ -4,19 +4,21 @@ import { addProject, addProjectFailure, addProjectSuccess, deleteProject, loadPr
 
 export interface ProjectState {
   projects: Project[];
+  error: any;
 }
 
 export const initialState: ProjectState = {
-  projects: []
+  projects: [],
+  error:null
 };
 
 export const projectReducer = createReducer(
   initialState,
 
-  on(addProject, (state, { project }) => ({
-    ...state,
-    projects: [...state.projects, project]
-  })),
+  // on(addProject, (state, { project }) => ({
+  //   ...state,
+  //   projects: [...state.projects, project]
+  // })),
 
   on(addProjectSuccess, (state, { project }) => ({
     ...state,
