@@ -15,6 +15,8 @@ import { projectReducer } from './state/project.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './state/project.effects';
+import { ProjectService } from './state/project.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,16 +29,17 @@ import { ProjectEffects } from './state/project.effects';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     ProjectDashboardModule,
     StoreModule.forRoot({ project: projectReducer }),
-    StoreModule.forRoot({ projectState: projectReducer }),
+    // StoreModule.forRoot({ projectState: projectReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([ProjectEffects]),
   ],
-  providers: [],
+  providers: [ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

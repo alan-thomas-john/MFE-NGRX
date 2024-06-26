@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Project } from './state/project.model';
-
+import { Project } from './project.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
 
-  private apiUrl = '';
+  private apiUrl = 'http://localhost:3000/auth';
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +17,6 @@ export class ProjectService {
   }
 
   addProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(this.apiUrl, project);
+    return this.http.post<Project>(`${this.apiUrl}/project`, project);
   }
 }
