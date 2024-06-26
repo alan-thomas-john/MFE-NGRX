@@ -16,11 +16,6 @@ import { employeeReducer } from '../state/employee.reducer';
     ReactiveFormsModule,
     StoreModule.forRoot(employeeReducer),
     StoreModule.forFeature('employees', employeeReducer)
-
-    // RouterModule.forChild([
-    //   {path :'register',component:RegistrationComponent}
-    // ])
-    // RegistrationRoutingModule
   ]
 })
 export class RegistrationModule { }
