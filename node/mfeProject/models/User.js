@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const { DataTypes, Model } = require('sequelize');
 const Project = require('./Project');
 const sequelize = require('../config/db');
@@ -11,6 +12,9 @@ class User extends Model {
   // You can define instance-level methods here
   async saveUser() {
     return await this.save();
+  }
+  async checkPassword(password) {
+    return await bcrypt.compare(password, this.password);
   }
   async addProject(project){
     return await this.setProject(project);
@@ -53,6 +57,16 @@ User.init({
   modelName: 'User',
   tableName: 'users',
   timestamps: true,
+  hooks: {
+    beforeCreate: async (user) => {
+      user.password = await bcrypt.hash(user.password, 10);
+    },
+    beforeUpdate: async (user) => {
+      if (user.changed('password')) {
+        user.password = await bcrypt.hash(user.password, 10);
+      }
+    },
+  },
 });
 User.belongsTo(Project, { foreignKey: 'projectId' });
 
