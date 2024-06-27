@@ -1,15 +1,29 @@
 
 const jwt = require('jsonwebtoken');
 // const bcrypt = require('bcrypt');
-const db = require('../config/db');
+const bcrypt = require('bcrypt');
 //const secretKey = 'your_secret_key';
 const User = require('../models/User');
 const Project = require('../models/Project');
+const config = require('../config/config');
+
+
+const filterUserResponse = (user) => {
+    return {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        position: user.position,
+        role: user.role,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+    };
+};
 const getUsers = async (req, res) => {
     try {
-        const result = await db.query('SELECT * FROM users');
-        console.log(result.rows); // Log the rows to see the user data
-        res.status(200).json(result.rows); // Send the user data as JSON response
+        const users = await User.findAll();
+        const userResponse=users.map(user=>filterUserResponse(user))
+        res.status(200).json(userResponse); // Send the user data as JSON response
     } catch (err) {
         console.error('Database query error', err);
         res.status(500).send({ message: 'Internal server error' });
@@ -23,8 +37,10 @@ const login = async (req, res) => {
         const existingUser = await User.findOneByEmail(email);
         if (existingUser) {
             if (existingUser.role == 'ADMIN') {
-                if (existingUser.password === password) {
-                    res.status(200).send({ message: 'Login successful' });
+                const passwordMatch = await bcrypt.compare(password, existingUser.password);
+                if (passwordMatch) {
+                    const token = jwt.sign({ username: existingUser.username, role: existingUser.role }, config.secretKey, { expiresIn: '8h' });
+                    res.status(200).send({ message: 'Login successful',token });
                 } else {
                     res.status(401).send({ message: 'Invalid  password' });
                 }
@@ -65,8 +81,9 @@ const register = async (req, res) => {
         });
         // const newUser = new User(email,name, password, position,role);
         const savedUser = await newUser.save();
+        const userResponse=filterUserResponse(savedUser);
 
-        return res.status(201).json({ message: 'User registered successfully', user: savedUser });
+        return res.status(201).json({ message: 'User registered successfully', user: userResponse });
 
     } catch (err) {
         console.error('Registration error', err);

@@ -12,10 +12,15 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   addEmployee(employee: Employee): Observable<Employee> {
-    console.log("fai")
     return this.http.post<Employee>(`${this.apiUrl}register`, employee);
+  }
 
+  // viewEmployee(employee: Employee): Observable<Employee> {
+  //   return this.http.get<Employee>(`${this.apiUrl}employeelist/${employee.id}`);
+  // }
 
+  getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.apiUrl}users`);
   }
 
   deleteEmployee(emailId: string): Observable<{ emailId: string }> {

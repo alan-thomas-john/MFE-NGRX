@@ -11,6 +11,7 @@ const authRoutes = require('./routes/authRoutes');
   app.use(cors());
 
   app.use('/auth', authRoutes);
+  
 
   // app.post('/login',(req,res) => {
   //   const{email,password}= req.body;
