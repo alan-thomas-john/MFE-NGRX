@@ -38,8 +38,8 @@ module.exports = {
 
         // For hosts (please adjust)
         remotes: {
-            "employeeManagement": "http://localhost:4300/remoteEntry.js",
-            "projectManagement": "http://localhost:4200/remoteEntry.js",
+            "employeeManagement": "employeeManagement@http://localhost:4300/remoteEntry.js",
+            "projectManagement": "projectManagement@http://localhost:4201/remoteEntry.js",
 
         },
 

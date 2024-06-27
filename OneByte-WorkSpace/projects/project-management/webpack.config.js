@@ -11,7 +11,7 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "projectManagement",
-    publicPath: "auto",
+    publicPath: "http://localhost:4201/",
     scriptType: "text/javascript"
   },
   optimization: {
@@ -33,7 +33,7 @@ module.exports = {
         name: "projectManagement",
         filename: "remoteEntry.js",
         exposes: {
-            './Component': './projects/project-management/src/app/app.component.ts',
+            './ProjectDashboardModule': './projects/project-management/src/app/project-dashboard/project-dashboard.module.ts',
         },
 
         // For hosts (please adjust)

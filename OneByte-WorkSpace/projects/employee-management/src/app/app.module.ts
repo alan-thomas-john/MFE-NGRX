@@ -20,8 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // EmployeeDashboardRoutingModule,
-    // RegistrationRoutingModule,
     FormsModule,
     StoreModule.forRoot(employeeReducer),
     ReactiveFormsModule,
