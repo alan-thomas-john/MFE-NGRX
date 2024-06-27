@@ -7,7 +7,8 @@ import {
   resetSearch,
   searchEmployees,
   errorNull,
-  employeeNull
+  employeeNull,
+  setEmployees
 } from './employee.actions';
 
 import { Employee } from './employee.model';
@@ -29,11 +30,6 @@ export const initialState: EmployeeState = {
 
 export const employeeReducer = createReducer(
   initialState,
-  // on(addEmployee, (state, { employee }) => ({
-  //   ...state,
-  //   employees: [...state.employees, employee],
-  //   registrationError: null,
-  // })),
 
   on(addEmployeeSuccess, (state, { employee }) => ({
     ...state,
@@ -55,12 +51,17 @@ export const employeeReducer = createReducer(
     ...state,
     employeeDetails:null
   })),
-
+  
+  on(setEmployees, (state, { employees }) => ({
+    ...state,
+    employees,
+    error: null,
+  })),
 
   on(deleteEmployeeSuccess, (state, { emailId }) => ({
     ...state,
     employees: state.employees.filter(
-      (employee) => employee.emailId !== emailId
+      (employee) => employee.email !== emailId
     ),
   })),
 
