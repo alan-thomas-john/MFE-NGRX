@@ -35,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ProjectDashboardModule,
     StoreModule.forRoot({ project: projectReducer }),
-    // StoreModule.forRoot({ projectState: projectReducer }),
+    StoreModule.forRoot({ projectState: projectReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([ProjectEffects]),
   ],

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { addProject, addProjectFailure, addProjectSuccess, loadProjects, loadProjectsFailure, loadProjectsSuccess } from "./project.actions";
-import { catchError, map, mergeMap, of } from "rxjs";
+import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { ProjectService } from "./project.service";
 
 @Injectable()
@@ -11,17 +11,17 @@ export class ProjectEffects {
     private actions$: Actions, private projectService: ProjectService
   ) { }
 
-  loadProjects$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(loadProjects),
-      mergeMap(() =>
-        this.projectService.getProjects().pipe(
-          map(projects => loadProjectsSuccess({ projects })),
-          catchError(error => of(loadProjectsFailure({ error })))
-        )
-      )
-    )
-  );
+  // loadProjects$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(loadProjects),
+  //     mergeMap(() =>
+  //       this.projectService.getProjects().pipe(
+  //         map(projects => loadProjectsSuccess({ projects })),
+  //         catchError(error => of(loadProjectsFailure({ error })))
+  //       )
+  //     )
+  //   )
+  // );
 
   addProject$ = createEffect(() =>
     this.actions$.pipe(
@@ -34,6 +34,5 @@ export class ProjectEffects {
       )
     )
   );
-
 
 }
