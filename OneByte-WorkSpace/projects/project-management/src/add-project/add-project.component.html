@@ -1,5 +1,13 @@
-<div class="form-container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <div class="form-container">
+
   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <h1>Add New Project</h1>
       <div class="form-group">
           <label for="name">Project Name:</label>
           <input id="name" formControlName="name" name="name" class="form-control" />
@@ -23,6 +31,6 @@
       <button type="submit" class="btn primary-btn">Add</button>
   </form>
 
-
-<app-confirmation *ngIf="openDialog" [project]="projectForm.value" (confirmed)="onDialogConfirmed()" (cancelled)="onDialogCancelled()"></app-confirmation>
 </div>
+<app-confirmation *ngIf="openDialog" [project]="projectForm.value" (confirmed)="onDialogConfirmed()" (cancelled)="onDialogCancelled()"></app-confirmation>
+</body>

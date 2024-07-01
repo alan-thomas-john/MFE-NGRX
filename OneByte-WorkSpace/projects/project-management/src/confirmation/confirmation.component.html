@@ -1,8 +1,11 @@
 <div class="dialog-container">
-    <div class="dialog-box">
-      <p>{{ project.name }}</p>
-  
-      <button class="cart-btn" (click)="onConfirm()">Add</button>
-      <button class="cart-btn-cancel" (click)="onCancel()">Cancel</button>
-    </div>
+  <div class="dialog-box">
+    <p>Name : {{project.name}}</p>
+    <p>Frontend: {{project.front_end}}</p>
+    <p>Backend: {{project.back_end}}</p>
+    <p>Start Date: {{ project.start_date }}</p>
+    <p>End Date: {{ project.end_date }}</p>
+    <button class="cart-btn" (click)="onConfirm()">Add</button>
+    <button class="cart-btn-cancel" (click)="onCancel()">Cancel</button>
   </div>
+</div>

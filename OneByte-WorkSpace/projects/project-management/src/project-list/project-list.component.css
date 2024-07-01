@@ -1,35 +1,62 @@
-.project-list {
-    margin-top: 30px;
-    text-align: left;
-}
-
-ul {
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #c8ddb8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .project-list {
+    background-color: #1d2b36;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    color: #ffffff;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  ul {
     list-style: none;
     padding: 0;
-}
-
-li {
+  }
+  
+  li {
+    background-color: #2a3a48;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-.project-view {
-    flex-grow: 1;
-}
-
-.delete-button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
+  }
+  
+  .project-info {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .delete-button {
     padding: 5px 10px;
-    cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.delete-button:hover {
-    background-color: #c82333;
-}
+    border: none;
+    background-color: #e74c3c;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-button:hover {
+    background-color: #c0392b;
+  }
+  
