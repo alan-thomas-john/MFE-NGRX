@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Project } from '../state/project.model';
+import { Project } from '../app/state/project.model';
 import { Store } from '@ngrx/store';
-import { ProjectState } from '../state/project.reducer';
-import { selectAllProjects } from '../state/project.selectors';
-import { deleteProject, loadProjects, loadProjectsSuccess } from '../state/project.actions';
-import { ProjectService } from '../state/project.service';
+import { ProjectState } from '../app/state/project.reducer';
+import { selectAllProjects } from '../app/state/project.selectors';
+import { deleteProject, loadProjects, loadProjectsSuccess } from '../app/state/project.actions';
+import { ProjectService } from '../app/state/project.service';
 
 @Component({
   selector: 'app-project-list',

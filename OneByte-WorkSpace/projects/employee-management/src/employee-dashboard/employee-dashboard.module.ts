@@ -8,9 +8,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from '../registration/registration-routing.module';
-import { RouterModule } from '@angular/router';
+import { RouterModule} from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { employeeReducer } from '../state/employee.reducer';
+import { employeeReducer } from '../app/state/employee.reducer';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -23,14 +24,16 @@ import { employeeReducer } from '../state/employee.reducer';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
+   // BrowserModule,//this caused routing issue
+    MatSnackBarModule,
     ReactiveFormsModule,
+    //RouterOutlet,
     // EmployeeDashboardRoutingModule,
     // RegistrationRoutingModule,
     RouterModule.forChild([
-      { path:'', component:EmployeeDashboardComponent },
-      {path:'register',component:RegistrationComponent},
-      {path:'list',component:EmployeeListComponent},
+      { path: '', component: EmployeeDashboardComponent },
+      { path: 'register', component: RegistrationComponent },
+      { path: 'list', component: EmployeeListComponent },
 
     ]),
     StoreModule.forRoot(employeeReducer),

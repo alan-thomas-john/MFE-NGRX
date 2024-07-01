@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RegistrationComponent } from './registration.component';
 import { StoreModule } from '@ngrx/store';
-import { employeeReducer } from '../state/employee.reducer';
+import { employeeReducer } from '../app/state/employee.reducer';
 // import { RegistrationRoutingModule } from './registration-routing.module';
 
 

@@ -27,13 +27,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        //library: { type: "module" },
+        // library: { type: "module" },
 
         // For remotes (please adjust)
         name: "oneByte",
         // filename: "remoteEntry.js",
         // exposes: {
-        //     './Component': './projects/one-byte/src/app/app.component.ts',
+        //     './AppRoutingModule': './projects/one-byte/src/app/app-routing.module.ts',
         // },
 
         // For hosts (please adjust)

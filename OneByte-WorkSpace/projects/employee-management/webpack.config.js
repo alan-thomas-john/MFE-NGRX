@@ -11,7 +11,7 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "employeeManagement",
-    publicPath: "http://localhost:4300/",
+    publicPath: "auto",
     scriptType: "text/javascript"
   },
   optimization: {
@@ -27,17 +27,21 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
+      // library: {
+      //   type: "module"
+      // },
          name: "employeeManagement",
         filename: "remoteEntry.js",
         exposes: {
-            './EmployeeDashboardModule': './projects/employee-management/src/app/employee-dashboard/employee-dashboard.module.ts',
+            './EmployeeDashboardModule': './projects/employee-management/src/employee-dashboard/employee-dashboard.module.ts',
+            //'./Component': './projects/employee-management/src/app/registration/registration.component.ts'
             // './routes':'./projects/employee-management/src/app/employee-dashboard/'
         },
 
         // For hosts (please adjust)
         // remotes: {
-        //     "oneByte": "http://localhost:4200/remoteEntry.js",
-        //     "projectManagement": "http://localhost:4200/remoteEntry.js",
+        //     "oneByte": "oneByte@http://localhost:4200/remoteEntry.js",
+        //     "projectManagement": "projectManagement@http://localhost:4200/remoteEntry.js",
 
         // },
 

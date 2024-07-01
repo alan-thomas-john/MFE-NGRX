@@ -11,7 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './state/project.effects';
 import { ProjectService } from './state/project.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ProjectDashboardModule } from './project-dashboard/project-dashboard.module';
+import { ProjectDashboardModule } from '../project-dashboard/project-dashboard.module';
 
 
 @NgModule({

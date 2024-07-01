@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Project } from '../state/project.model';
-import { ProjectState } from '../state/project.reducer';
-import { addProject } from '../state/project.actions';
+import { Project } from '../app/state/project.model';
+import { ProjectState } from '../app/state/project.reducer';
+import { addProject } from '../app/state/project.actions';
 import { Observable } from 'rxjs';
-import { selectAddProjectError, selectAddProjectSuccess } from '../state/project.selectors';
+import { selectAddProjectError, selectAddProjectSuccess } from '../app/state/project.selectors';
 
 @Component({
   selector: 'app-add-project',

@@ -23,7 +23,7 @@
 // };
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('oneByte', 'postgres', 'fahim', {
+const sequelize = new Sequelize('OneByte', 'postgres', 'alan@123', {
   host: 'localhost',
   dialect: 'postgres',
 });
