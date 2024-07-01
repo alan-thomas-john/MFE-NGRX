@@ -4,7 +4,7 @@ const { verifyToken } = require('../middleware/authenticateToken');
 const { getUsers,login, register, addProject, assignProjectToUsers, deleteEmployee, deleteProject, getProject } = require('../controllers/authController'); 
 const router = express.Router();
 
-router.get('/users',verifyToken, getUsers);
+router.get('/users', getUsers);
 router.post('/login',login);
 router.post('/register',register);
 router.post('/project',verifyToken,addProject)

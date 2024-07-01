@@ -26,11 +26,11 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
+    //BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-     AppRoutingModule,
+    //AppRoutingModule,
     RouterModule.forChild([
       { path: '', component: ProjectDashboardComponent },
       { path: 'add', component: AddProjectComponent },

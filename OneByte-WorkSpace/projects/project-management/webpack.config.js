@@ -33,7 +33,7 @@ module.exports = {
         name: "projectManagement",
         filename: "remoteEntry.js",
         exposes: {
-            './ProjectDashboardModule': './projects/project-management/src/app/project-dashboard/project-dashboard.module.ts',
+            './ProjectDashboardModule': './projects/project-management/src/project-dashboard/project-dashboard.module.ts',
         },
 
         // For hosts (please adjust)

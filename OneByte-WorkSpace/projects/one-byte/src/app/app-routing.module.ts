@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
 
   {
-    path: 'dashboard',
+    path: 'employeedashboard',
     loadChildren: () => loadRemoteModule({
       remoteEntry: EMPLOYEE_MANAGEMENT_URL,
       remoteName: "employeeManagement",
@@ -23,7 +23,7 @@ const routes: Routes = [
     ,
   },
   {
-    path: 'projectDashboard',
+    path: 'projectdashboard',
     loadChildren: () => loadRemoteModule({
       remoteEntry: PROJECT_MANAGEMENT_URL,
       remoteName: "projectManagement",

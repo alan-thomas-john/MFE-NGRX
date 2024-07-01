@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: '/dashboard', pathMatch: 'full'},
+  {path:'', redirectTo: '/employeedashboard', pathMatch: 'full'},
   // {path:'register', component: EmployeeDashboardComponent},
-   {path:'dashboard', component: EmployeeDashboardComponent},
+   {path:'employeedashboard', component: EmployeeDashboardComponent},
   {path:'dashboard/register', component: RegistrationComponent},
   {path:'dashboard/list', component: EmployeeListComponent},
    //{path:'register',component:RegistrationComponent},

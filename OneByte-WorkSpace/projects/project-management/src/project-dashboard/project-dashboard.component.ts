@@ -11,9 +11,9 @@ export class ProjectDashboardComponent {
   constructor(private router:Router){}
 
   navigateToAddProject(){
-    this.router.navigate(['add'])
+    this.router.navigate(['projectdashboard/add'])
   }
   navigateToProjectList(){
-    this.router.navigate(['list'])
+    this.router.navigate(['projectdashboard/list'])
   }
 }

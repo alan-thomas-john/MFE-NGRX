@@ -12,12 +12,12 @@ import { AddProjectComponent } from './add-project.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild([
-      {
-        path:'',
-        component:AddProjectComponent
-      }
-    ]),
-  ]
+  //   RouterModule.forChild([
+  //     {
+  //       path:'',
+  //       component:AddProjectComponent
+  //     }
+  //   ]),
+   ]
 })
 export class AddProjectModule { }
