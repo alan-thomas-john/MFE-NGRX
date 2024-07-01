@@ -14,6 +14,7 @@ import { EmployeeDashboardModule } from 'projects/employee-management/src/employ
 import { StoreModule } from '@ngrx/store';
 
 import { employeeReducer } from 'projects/employee-management/src/app/state/employee.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -21,12 +22,14 @@ import { employeeReducer } from 'projects/employee-management/src/app/state/empl
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    EmployeeDashboardModule,
+    // EmployeeDashboardModule,
     ReactiveFormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot(employeeReducer),
+    EffectsModule.forRoot([]),
+    StoreModule.forFeature('employees', employeeReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],

@@ -19,6 +19,14 @@ const routes: Routes = [
     }).then(m => m.EmployeeDashboardModule).catch(err => console.log(err))
     ,
   },
+  { path: 'projectdashboard',
+    loadChildren: () => loadRemoteModule({
+      remoteEntry: PROJECT_MANAGEMENT_URL,
+      remoteName: "projectManagement",
+      exposedModule: "./ProjectDashboardModule"
+    }).then(m => m.ProjectDashboardModule).catch(err => console.log(err))
+    ,
+  },
 ];
 
 
