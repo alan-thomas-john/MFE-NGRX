@@ -1,14 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectDashboardComponent } from './project-dashboard/project-dashboard.component';
+import { ProjectDashboardComponent } from '../project-dashboard/project-dashboard.component';
+import { CommonModule } from '@angular/common';
+import { AddProjectComponent } from '../add-project/add-project.component';
+import { ProjectListComponent } from '../project-list/project-list.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: '/dashboard', pathMatch: 'full'},
-  {path:'dashboard', component: ProjectDashboardComponent},
+  {path:'', redirectTo: '/projectdashboard', pathMatch: 'full'},
+  {path:'projectdashboard', component: ProjectDashboardComponent},
+  {path:'projectdashboard/add', component: AddProjectComponent},
+  {path:'projectdashboard/list', component: ProjectListComponent},
+
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

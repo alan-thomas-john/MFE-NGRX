@@ -31,7 +31,8 @@ export const projectReducer = createReducer(
 
   on(loadProjectsSuccess, (state, { projects }) => ({
     ...state,
-    projects
+    projects,
+    error: null
   })),
 
   on(loadProjectsFailure, (state, { error }) => ({

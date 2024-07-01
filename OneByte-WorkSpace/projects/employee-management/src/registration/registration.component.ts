@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import { EmployeeState } from '../state/employee.reducer';
+import { EmployeeState } from '../app/state/employee.reducer';
 import {
   addEmployee,
   employeeNull,
   errorNull,
-} from '../state/employee.actions';
+} from '../app/state/employee.actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   selectEmployee,
   selectEmployeeError,
-} from '../state/employee.selectors';
+} from '../app/state/employee.selectors';
 import { tap } from 'rxjs';
 
 @Component({

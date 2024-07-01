@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EmployeeDashboardModule } from './employee-dashboard/employee-dashboard.module';
+import { EmployeeDashboardModule } from '../employee-dashboard/employee-dashboard.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { employeeReducer } from './state/employee.reducer';
@@ -13,12 +13,14 @@ import { EffectsModule, EffectsRootModule } from '@ngrx/effects';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeEffects } from './state/employee.effects';
+import { CommonModule } from '@angular/common';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard/employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from './registration/registration-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    //CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

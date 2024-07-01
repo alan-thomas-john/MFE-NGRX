@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Employee } from '../state/employee.model';
+import { Employee } from '../app/state/employee.model';
 import { Store, select } from '@ngrx/store';
-import { EmployeeState } from '../state/employee.reducer';
-import { selectAllEmployees } from '../state/employee.selectors';
-import {setEmployees } from '../state/employee.actions';
-import { EmployeeService } from '../state/employee.service';
+import { EmployeeState } from '../app/state/employee.reducer';
+import { selectAllEmployees } from '../app/state/employee.selectors';
+import { deleteEmployeeSuccess, setEmployees } from '../app/state/employee.actions';
+import { EmployeeService } from '../app/state/employee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

@@ -9,12 +9,12 @@ import { RouterModule } from '@angular/router';
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forChild([
-      {
-        path:'',
-        component:ProjectListComponent
-      }
-    ]),
+    // RouterModule.forChild([
+    //   {
+    //     path:'',
+    //     component:ProjectListComponent
+    //   }
+    // ]),
   ]
 })
 export class ProjectListModule { }

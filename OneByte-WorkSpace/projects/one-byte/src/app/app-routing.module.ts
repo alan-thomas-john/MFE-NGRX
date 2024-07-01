@@ -1,10 +1,11 @@
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from '../login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from '../home/home.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 
 const EMPLOYEE_MANAGEMENT_URL= "http://localhost:4300/remoteEntry.js";
+const PROJECT_MANAGEMENT_URL= "http://localhost:4201/remoteEntry.js";
 
 const routes: Routes = [
   {path:'', redirectTo: '/login', pathMatch: 'full'},
@@ -18,7 +19,6 @@ const routes: Routes = [
     }).then(m => m.EmployeeDashboardModule).catch(err => console.log(err))
     ,
   },
-
 ];
 
 

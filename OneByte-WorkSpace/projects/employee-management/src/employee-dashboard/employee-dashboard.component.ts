@@ -11,11 +11,11 @@ export class EmployeeDashboardComponent {
   constructor(private router:Router){}
 
   navigateToRegistration(){
-    this.router.navigate(['register'])
+    this.router.navigate(['employeedashboard/register']);
 
   }
   navigateToEmployeeList(){
-    this.router.navigate(['list']);
+    this.router.navigate(['employeedashboard/list']);
 
   }
 

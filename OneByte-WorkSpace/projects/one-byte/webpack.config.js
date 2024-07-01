@@ -27,19 +27,19 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        //library: { type: "module" },
+        // library: { type: "module" },
 
         // For remotes (please adjust)
         name: "oneByte",
         // filename: "remoteEntry.js",
         // exposes: {
-        //     './Component': './projects/one-byte/src/app/app.component.ts',
+        //     './AppRoutingModule': './projects/one-byte/src/app/app-routing.module.ts',
         // },
 
         // For hosts (please adjust)
         remotes: {
-            "employeeManagement": "http://localhost:4300/remoteEntry.js",
-            "projectManagement": "http://localhost:4200/remoteEntry.js",
+            "employeeManagement": "employeeManagement@http://localhost:4300/remoteEntry.js",
+            "projectManagement": "projectManagement@http://localhost:4201/remoteEntry.js",
 
         },
 
