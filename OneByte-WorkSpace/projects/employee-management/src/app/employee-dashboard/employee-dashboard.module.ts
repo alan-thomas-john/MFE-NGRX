@@ -6,40 +6,31 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
 import { EmployeeDashboardComponent } from './employee-dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { EmployeeDashboardRoutingModule } from './employee-dashboard-routing.module';
-// import { RegistrationRoutingModule } from '../registration/registration-routing.module';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { employeeReducer } from '../state/employee.reducer';
-
-
 
 @NgModule({
   declarations: [
     ConfirmationComponent,
     RegistrationComponent,
     EmployeeListComponent,
-    EmployeeDashboardComponent
+    EmployeeDashboardComponent,
   ],
   imports: [
     CommonModule,
-    BrowserModule,
+   // BrowserModule,
     ReactiveFormsModule,
-    // EmployeeDashboardRoutingModule,
-    // RegistrationRoutingModule,
     RouterModule.forChild([
-      { path:'', component:EmployeeDashboardComponent },
-      {path:'register',component:RegistrationComponent},
-      {path:'list',component:EmployeeListComponent},
-
+      { path: '', component: EmployeeDashboardComponent },
+      { path: 'register', component: RegistrationComponent },
+      { path: 'list', component: EmployeeListComponent },
     ]),
+
     StoreModule.forRoot(employeeReducer),
-    StoreModule.forFeature('employees', employeeReducer)
-
+    StoreModule.forFeature('employees', employeeReducer),
   ],
-  // exports:[EmployeeDashboardRoutingModule,RegistrationRoutingModule]
 
+  exports: [],
 })
-export class EmployeeDashboardModule {
-  // static forRoot: any;
-}
+export class EmployeeDashboardModule {}

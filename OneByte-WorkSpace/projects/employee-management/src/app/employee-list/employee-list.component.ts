@@ -4,7 +4,7 @@ import { Employee } from '../state/employee.model';
 import { Store, select } from '@ngrx/store';
 import { EmployeeState } from '../state/employee.reducer';
 import { selectAllEmployees } from '../state/employee.selectors';
-import { deleteEmployeeSuccess, setEmployees } from '../state/employee.actions';
+import {setEmployees } from '../state/employee.actions';
 import { EmployeeService } from '../state/employee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -25,28 +25,42 @@ export class EmployeeListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.employeeService.getAllEmployees().subscribe({
-      next: (employees: Employee[]) => {
-        console.log('Fetched employees from backend:', employees);
-        this.isEmpty = employees.length === 0;
-        this.store.dispatch(setEmployees({ employees }));
-        this.employees$ = this.store.pipe(select(selectAllEmployees));
-        console.log('employees from the store', this.employees$);
-      },
-      error: (error) => {
-        console.error('Error fetching employees:', error);
-        this.snackBar.open('Error fetching employees', 'Close', {
-          duration: 3000,
-          verticalPosition: 'top', // Position the snackbar at the top
+    this.employees$ = this.store.pipe(select(selectAllEmployees));
+    this.employees$.subscribe((employees) => {
+      console.log('Employees in component:', employees);
+      if (employees.length == 0) {
+        this.employeeService.getAllEmployees().subscribe({
+          next: (employees: Employee[]) => {
+            console.log('Fetched employees from backend:', employees);
+            this.isEmpty = employees.length === 0;
+            this.store.dispatch(setEmployees({ employees }));
+            this.employees$ = this.store.pipe(select(selectAllEmployees));
+            console.log('employees from the store', this.employees$);
+          },
+          error: (error) => {
+            console.error('Error fetching employees:', error);
+            this.snackBar.open('Error fetching employees', 'Close', {
+              duration: 3000,
+              verticalPosition: 'top', // Position the snackbar at the top
+            });
+          },
         });
-      },
+      }
     });
 
-    this.employees$ = this.store.pipe(select(selectAllEmployees));
+    // this.employees$ = this.store.pipe(select(selectAllEmployees));
   }
 
-
-  deleteEmployees(emailId: string) {
-    this.store.dispatch(deleteEmployeeSuccess({ emailId }));
+  deleteEmployees() {
+    //   this.employeeService.deleteEmployee(email).subscribe({
+    //     next: (response) => {
+    //       this.store.dispatch(
+    //         deleteEmployeeSuccess({ emailId: response.email })
+    //       );
+    //     },
+    //     error: (err) => {
+    //       console.error('Error deleting employee', err);
+    //     },
+    //   });
   }
 }

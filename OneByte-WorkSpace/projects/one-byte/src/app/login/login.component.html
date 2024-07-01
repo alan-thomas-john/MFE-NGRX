@@ -1,13 +1,28 @@
-<div class="form-container">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="login_form-group">
-      <label for="userName">User Name</label>
-      <input id="userName" formControlName="email" name="userName" class="login_form-control" />
+<body>
+  <div>
+    <div class="login-container">
+      <div class="login-box">
+        <div class="heading"></div>
+        <h1>Bytestrone</h1>
+        <div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="login_form-group">
+              <div class="inputfields"><label for="email">Email</label></div>
+              <input id="email" formControlName="email" name="email" placeholder="Enter email">
+              <br>
+            </div>
+            <div class="login_form-group">
+              <div class="content">
+                <div class="inputfields"><label for="password">Password</label><br></div>
+                <input id="password" formControlName="password" name="password" placeholder="Enter password..."
+                  type="password">
+              </div>
+            </div>
+            <br>
+            <button type="submit" class="btn primary-btn">Login</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="login_form-group">
-      <label for="password">Password</label>
-      <input id="password" formControlName="password" name="password" class="login_form-control" type="password" />
-    </div>
-    <button type="submit" class="btn primary-btn">Login Here</button>
-  </form>
-</div>
+  </div>
+</body>

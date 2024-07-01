@@ -51,19 +51,20 @@ export const employeeReducer = createReducer(
     ...state,
     employeeDetails:null
   })),
-  
+
   on(setEmployees, (state, { employees }) => ({
     ...state,
     employees,
     error: null,
   })),
 
-  on(deleteEmployeeSuccess, (state, { emailId }) => ({
+  // for deleting emloyees
+  on(deleteEmployeeSuccess, (state, { id }) => ({
     ...state,
-    employees: state.employees.filter(
-      (employee) => employee.email !== emailId
-    ),
+    employees: state.employees.filter(employee => employee.id !== id)
   })),
+
+  
 
   on(searchEmployees, (state, { searchTerm }) => {
     const filteredEmployees = state.employees.filter((employee) =>

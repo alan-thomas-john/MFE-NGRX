@@ -20,6 +20,7 @@ import { employeeReducer } from 'projects/employee-management/src/app/state/empl
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     EmployeeDashboardModule,
     ReactiveFormsModule,
     MatSnackBarModule,

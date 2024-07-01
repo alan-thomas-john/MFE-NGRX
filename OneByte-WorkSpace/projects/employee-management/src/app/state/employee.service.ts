@@ -23,7 +23,7 @@ export class EmployeeService {
     return this.http.get<Employee[]>(`${this.apiUrl}users`);
   }
 
-  deleteEmployee(emailId: string): Observable<{ emailId: string }> {
-    return this.http.delete<{ emailId: string }>(`${this.apiUrl}/delete/${emailId}`);
+  deleteEmployee(): Observable<{id: number}> {
+    return this.http.delete<{ id: number }>(`${this.apiUrl}user`,);
   }
 }

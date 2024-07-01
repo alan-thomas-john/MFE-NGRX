@@ -1,53 +1,97 @@
-/* Styles for the form container */
-.form-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  color: white;
+  background-color: #c8ddb8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: large;
 }
 
-/* Styles for form groups (each form element and its label) */
-.login_form-group {
+
+
+.login-box {
+  background-color: #1d2b36;
+  padding: 100px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  border-radius: 16px;
   margin-bottom: 15px;
 }
 
-.login_form-group label {
+.input-group label {
+  border-radius: 16px;
   display: block;
-  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
   margin-bottom: 5px;
 }
 
-.login_form-control {
+.input-group input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
+  border-radius: 16px;
   border: 1px solid #ccc;
-  border-radius: 3px;
   font-size: 14px;
 }
 
-/* Styles for the submit button */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
   border: none;
-  border-radius: 3px;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.btn.primary-btn:hover {
-  background-color: #0056b3;
+button:hover {
+  background-color: #45a049;
 }
 
-.btn:focus {
-  outline: none;
+footer {
+  position: absolute;
+  bottom: 10px;
+  font-size: 12px;
+  color: #aaa;
 }
-.btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.inputfields{
+  border-radius: 10px;
 }
+.content
+{
+  width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+input
+{
+  width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+
+}
+::ng-deep .my-custom-snackbar {
+  position: fixed;
+  z-index: 9999;
+  top: 40px; /* Adjust this value to set the vertical position */
+  left: 50%; /* Adjust this value to set the horizontal position */
+  transform: translateX(-50%);
+}
+

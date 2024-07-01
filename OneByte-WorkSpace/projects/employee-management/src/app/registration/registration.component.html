@@ -1,22 +1,31 @@
-<div class="form-container">
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input id="name" formControlName="name" name="name" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="email">Email ID:</label>
-        <input id="email" formControlName="email" name="email" class="form-control" type="email" />
-      </div>
-      <div class="form-group">
-        <label for="position">Position:</label>
-        <input id="position" formControlName="position" name="position" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input id="password" formControlName="password" name="password" class="form-control" required />
-      </div>
-      <button type="submit" class="btn primary-btn">Register</button>
-    </form>
-  </div>
-  <app-confirmation  *ngIf="openDialog" [employee]="registrationForm.value" (confirmed)="onDialogConfirmed()" (cancelled)="onDialogCancelled()" ></app-confirmation>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <div class="form-container">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <h1>Register here</h1>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input id="name" formControlName="name" name="name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email ID:</label>
+                <input id="email" formControlName="email" name="email" class="form-control" type="email" />
+            </div>
+            <div class="form-group">
+                <label for="position">Position:</label>
+                <input id="position" formControlName="position" name="position" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input id="password" formControlName="password" name="password" class="form-control" required />
+            </div>
+            <button type="submit" class="btn primary-btn">Register</button>
+        </form>
+    </div>
+    <app-confirmation *ngIf="openDialog" [employee]="registrationForm.value" (confirmed)="onDialogConfirmed()" (cancelled)="onDialogCancelled()"></app-confirmation>
+</body>

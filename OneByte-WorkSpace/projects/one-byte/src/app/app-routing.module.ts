@@ -7,8 +7,10 @@ import { loadRemoteModule } from '@angular-architects/module-federation';
 const EMPLOYEE_MANAGEMENT_URL= "http://localhost:4300/remoteEntry.js";
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
+  {path:'', redirectTo: '/login', pathMatch: 'full'},
+  {path:'login', component: LoginComponent},
+  {path:'home',component:HomeComponent},
+  { path: 'employeedashboard',
     loadChildren: () => loadRemoteModule({
       remoteEntry: EMPLOYEE_MANAGEMENT_URL,
       remoteName: "employeeManagement",
@@ -16,9 +18,7 @@ const routes: Routes = [
     }).then(m => m.EmployeeDashboardModule).catch(err => console.log(err))
     ,
   },
-  {path:'', redirectTo: '/login', pathMatch: 'full'},
-  {path:'login', component: LoginComponent},
-  {path:'home',component:HomeComponent},
+
 ];
 
 

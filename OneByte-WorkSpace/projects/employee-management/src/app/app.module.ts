@@ -9,9 +9,10 @@ import { StoreModule } from '@ngrx/store';
 import { employeeReducer } from './state/employee.reducer';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeModule } from './state/employee.module';
-import { EffectsRootModule } from '@ngrx/effects';
+import { EffectsModule, EffectsRootModule } from '@ngrx/effects';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmployeeEffects } from './state/employee.effects';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard/employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from './registration/registration-routing.module';
 
@@ -20,8 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // EmployeeDashboardRoutingModule,
-    // RegistrationRoutingModule,
     FormsModule,
     StoreModule.forRoot(employeeReducer),
     ReactiveFormsModule,

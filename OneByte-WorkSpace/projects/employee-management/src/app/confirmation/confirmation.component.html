@@ -1,8 +1,9 @@
 <div class="dialog-container">
-    <div class="dialog-box">
-      <p>{{ employee.name }}</p>
-  
-      <button class="cart-btn" (click)="onConfirm()">Register</button>
-      <button class="cart-btn-cancel" (click)="onCancel()">Cancel</button>
-    </div>
+  <div class="dialog-box">
+    <p>Name : {{employee?.name}}</p>
+    <p>Email: {{employee?.emailId}}</p>
+    <p>Position: {{employee?.position}}</p>
+    <button class="cart-btn" (click)="onConfirm()">Register</button>
+    <button class="cart-btn-cancel" (click)="onCancel()">Cancel</button>
   </div>
+</div>
