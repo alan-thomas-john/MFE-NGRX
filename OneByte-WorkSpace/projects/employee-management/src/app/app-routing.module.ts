@@ -9,8 +9,8 @@ const routes: Routes = [
   {path:'', redirectTo: '/employeedashboard', pathMatch: 'full'},
   // {path:'register', component: EmployeeDashboardComponent},
    {path:'employeedashboard', component: EmployeeDashboardComponent},
-  {path:'dashboard/register', component: RegistrationComponent},
-  {path:'dashboard/list', component: EmployeeListComponent},
+  {path:'employeedashboard/register', component: RegistrationComponent},
+  {path:'employeedashboard/list', component: EmployeeListComponent},
    //{path:'register',component:RegistrationComponent},
 
 ];
