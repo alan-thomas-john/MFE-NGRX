@@ -12,7 +12,7 @@ import {
   selectEmployee,
   selectEmployeeError,
 } from '../app/state/employee.selectors';
-import { tap } from 'rxjs';
+import { take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -49,7 +49,8 @@ export class RegistrationComponent {
             this.registrationForm.reset();
             this.store.dispatch(employeeNull());
           }
-        })
+        }),
+        take(1)
       )
       .subscribe();
 
@@ -64,12 +65,14 @@ export class RegistrationComponent {
             });
           }
           this.store.dispatch(errorNull());
-        })
+        }),
+        take(1)
       )
       .subscribe();
   }
 
   onSubmit() {
+    console.log('onSubmit called');
     if (this.registrationForm.valid) {
       this.openDialog = true;
       console.log(this.registrationForm.value);
@@ -82,7 +85,9 @@ export class RegistrationComponent {
   }
 
   onDialogConfirmed() {
+    console.log('onDialogConfirmed called');
     if (this.registrationForm.valid) {
+      console.log('Dispatching addEmployee action');
       this.store.dispatch(
         addEmployee({ employee: this.registrationForm.value })
       );

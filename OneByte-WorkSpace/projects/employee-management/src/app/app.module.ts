@@ -25,6 +25,8 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     FormsModule,
     StoreModule.forRoot(employeeReducer),
+    // StoreModule.forRoot({ employees: employeeReducer }),
+    // EffectsModule.forRoot([EmployeeEffects]),
     ReactiveFormsModule,
     HttpClientModule,
     EmployeeDashboardModule,

@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { employeeReducer } from '../app/state/employee.reducer';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EffectsModule } from '@ngrx/effects';
+import { EmployeeEffects } from '../app/state/employee.effects';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       { path: 'list', component: EmployeeListComponent },
     ]),
 
-    StoreModule.forRoot(employeeReducer),
-    StoreModule.forFeature('employees', employeeReducer),
+    // StoreModule.forRoot(employeeReducer),
+    // StoreModule.forFeature('employees', employeeReducer),
+    StoreModule.forFeature('employee',employeeReducer),
+    EffectsModule.forFeature([EmployeeEffects])
+
   ],
 
   exports: [],

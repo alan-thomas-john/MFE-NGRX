@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { employeeReducer } from 'projects/employee-management/src/app/state/employee.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { EmployeeEffects } from 'projects/employee-management/src/app/state/employee.effects';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -27,9 +28,11 @@ import { EffectsModule } from '@ngrx/effects';
     MatSnackBarModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot(employeeReducer),
-    EffectsModule.forRoot([]),
-    StoreModule.forFeature('employees', employeeReducer),
+   // StoreModule.forRoot(employeeReducer),
+    //EffectsModule.forRoot([]),
+    //StoreModule.forFeature('employees', employeeReducer),
+    StoreModule.forRoot({ employees: employeeReducer }),
+    EffectsModule.forRoot([EmployeeEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
