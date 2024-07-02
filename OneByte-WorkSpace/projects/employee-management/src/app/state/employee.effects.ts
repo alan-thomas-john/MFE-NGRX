@@ -22,8 +22,8 @@ export class EmployeeEffects {
       ofType(addEmployee),
       mergeMap((action) =>
         this.employeeService.addEmployee(action.employee).pipe(
-          map((employee: Employee) => {
-            console.log('Employee added successfully:', employee);
+          map((response) => {
+            const employee = response.user;
             return addEmployeeSuccess({ employee });
           }),
           catchError((error) => {
