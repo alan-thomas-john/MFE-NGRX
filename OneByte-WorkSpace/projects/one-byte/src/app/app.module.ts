@@ -1,3 +1,4 @@
+import { ProjectState, projectReducer } from './../../../project-management/src/app/state/project.reducer';
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,9 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from '../home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EmployeeDashboardModule } from 'projects/employee-management/src/employee-dashboard/employee-dashboard.module';
 import { StoreModule } from '@ngrx/store';
-
 import { employeeReducer } from 'projects/employee-management/src/app/state/employee.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployeeEffects } from 'projects/employee-management/src/app/state/employee.effects';
@@ -22,7 +21,7 @@ import { EmployeeEffects } from 'projects/employee-management/src/app/state/empl
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    // HttpClientModule,
     // EmployeeDashboardModule,
     ReactiveFormsModule,
     MatSnackBarModule,
@@ -32,7 +31,9 @@ import { EmployeeEffects } from 'projects/employee-management/src/app/state/empl
     //EffectsModule.forRoot([]),
     //StoreModule.forFeature('employees', employeeReducer),
     StoreModule.forRoot({ employees: employeeReducer }),
-    EffectsModule.forRoot([EmployeeEffects]),
+    //StoreModule.forRoot({ ProjectState:projectReducer }),
+    EffectsModule.forRoot([]),
+   //EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],

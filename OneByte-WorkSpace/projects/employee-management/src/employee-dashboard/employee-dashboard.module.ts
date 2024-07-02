@@ -34,8 +34,7 @@ import { EmployeeEffects } from '../app/state/employee.effects';
       { path: 'list', component: EmployeeListComponent },
     ]),
 
-    // StoreModule.forRoot(employeeReducer),
-    // StoreModule.forFeature('employees', employeeReducer),
+    
     StoreModule.forFeature('employee',employeeReducer),
     EffectsModule.forFeature([EmployeeEffects])
 

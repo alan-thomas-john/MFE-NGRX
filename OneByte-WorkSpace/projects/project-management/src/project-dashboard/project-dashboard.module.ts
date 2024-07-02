@@ -15,14 +15,12 @@ import { ProjectEffects } from '../app/state/project.effects';
 import { projectReducer } from '../app/state/project.reducer';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
-
-
 @NgModule({
   declarations: [
     ConfirmationComponent,
     AddProjectComponent,
     ProjectDashboardComponent,
-    ProjectListComponent
+    ProjectListComponent,
   ],
   imports: [
     CommonModule,
@@ -34,14 +32,13 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
     RouterModule.forChild([
       { path: '', component: ProjectDashboardComponent },
       { path: 'add', component: AddProjectComponent },
-      { path: 'list', component: ProjectListComponent }
+      { path: 'list', component: ProjectListComponent },
     ]),
-    StoreModule.forRoot({ projectState: projectReducer }),
-    // EffectsModule.forRoot([ProjectEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: isDevMode() })
+    //StoreModule.forRoot({ projectState: projectReducer }),
+    StoreModule.forFeature('project', projectReducer),
+    EffectsModule.forFeature([ProjectEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: isDevMode() }),
   ],
-  exports: [
-    ProjectDashboardComponent
-  ]
+  exports: [ProjectDashboardComponent],
 })
-export class ProjectDashboardModule { }
+export class ProjectDashboardModule {}

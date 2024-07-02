@@ -50,7 +50,6 @@ export class RegistrationComponent {
             this.store.dispatch(employeeNull());
           }
         }),
-        take(1)
       )
       .subscribe();
 
@@ -66,7 +65,6 @@ export class RegistrationComponent {
           }
           this.store.dispatch(errorNull());
         }),
-        take(1)
       )
       .subscribe();
   }
