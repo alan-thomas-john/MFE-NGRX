@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { addProject, addProjectFailure, addProjectSuccess, loadProjects, loadProjectsFailure, loadProjectsSuccess } from "./project.actions";
 import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { ProjectService } from "./project.service";
+import { Project } from "./project.model";
 
 @Injectable()
 export class ProjectEffects {
@@ -34,5 +35,7 @@ export class ProjectEffects {
       )
     )
   );
+
+  
 
 }

@@ -32,7 +32,9 @@ import { ProjectDashboardModule } from '../project-dashboard/project-dashboard.m
     StoreModule.forRoot({ project: projectReducer }),
     StoreModule.forRoot({ projectState: projectReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([ProjectEffects]),
+    EffectsModule.forRoot([]),
+    StoreModule.forFeature('project', projectReducer),
+    EffectsModule.forFeature([ProjectEffects]),
   ],
   providers: [ProjectService],
   bootstrap: [AppComponent]

@@ -25,6 +25,7 @@ export class ProjectListComponent implements OnInit {
   loadInitialProjects() {
     this.projectService.getProjects().subscribe({
       next: (projects) =>  {
+        console.log('loaded project',projects)
         this.store.dispatch(loadProjectsSuccess({ projects }));
       },
       error: (error) => {
