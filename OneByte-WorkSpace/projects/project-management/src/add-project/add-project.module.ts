@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AddProjectComponent } from './add-project.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { ProjectEffects } from '../app/state/project.effects';
+import { projectReducer } from '../app/state/project.reducer';
 
 
 
@@ -12,6 +16,8 @@ import { AddProjectComponent } from './add-project.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    StoreModule.forFeature('project', projectReducer),
+    EffectsModule.forFeature([ProjectEffects]),
   //   RouterModule.forChild([
   //     {
   //       path:'',

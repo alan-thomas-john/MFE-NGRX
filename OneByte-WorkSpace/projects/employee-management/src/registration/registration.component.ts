@@ -12,7 +12,7 @@ import {
   selectEmployee,
   selectEmployeeError,
 } from '../app/state/employee.selectors';
-import { take, tap } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-registration',

@@ -30,7 +30,7 @@ import { EmployeeEffects } from 'projects/employee-management/src/app/state/empl
    // StoreModule.forRoot(employeeReducer),
     //EffectsModule.forRoot([]),
     //StoreModule.forFeature('employees', employeeReducer),
-    StoreModule.forRoot({ employees: employeeReducer }),
+    StoreModule.forRoot({ employees: employeeReducer, projectState: projectReducer}),
     //StoreModule.forRoot({ ProjectState:projectReducer }),
     EffectsModule.forRoot([]),
    //EffectsModule.forRoot([]),
