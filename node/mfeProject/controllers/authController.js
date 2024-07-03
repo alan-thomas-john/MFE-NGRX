@@ -93,10 +93,10 @@ const register = async (req, res) => {
 
 const deleteEmployee = async (req, res) => {
     try {
-        const { id } = req.body;
-        if (!id) {
-            return res.status(400).json({ message: 'id is required' });
-        }
+        const { id } = req.params;
+        // if (!id) {
+        //     return res.status(400).json({ message: 'id is required' });
+        // }
         const existingUser = await User.findByPk(id);
         if (existingUser) {
             await User.destroy({ where: { id } })
