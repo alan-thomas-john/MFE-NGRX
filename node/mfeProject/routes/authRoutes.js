@@ -9,7 +9,7 @@ router.post('/login',login);
 router.post('/register',register);
 router.post('/project',addProject)
 router.post('/assign',assignProjectToUsers)
-router.delete('/user',deleteEmployee)
+router.delete('/user/:id',deleteEmployee)
 router.delete('/project',deleteProject)
 router.get('/project',getProject)
 module.exports = router;
