@@ -1,18 +1,25 @@
-<body>
 
-  <div class="employee-list" >
-      <h2>Employee List</h2>
-      <div *ngIf="employees$ | async as employees">
-          <ul>
-              <li *ngFor="let employee of employees">
-                  <span class="employee-info">
-                      Name: {{ employee.name }} <br />
-                      EmailId: {{ employee.email }} <br />
-                      Position: {{ employee.position }}
-                  </span>
-                  <button (click)="deleteEmployees()" class="delete-button">Delete</button>
-              </li>
-          </ul>
-      </div>
-  </div>
-</body>
+
+<div class="full">
+  <table class="employee-table" *ngIf="employees$ | async as employees">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email ID</th>
+        <th>Position</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.position }}</td>
+        <td>
+          <button (click)="deleteEmployees(employee.id)" class="delete-button">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

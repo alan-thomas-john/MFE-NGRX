@@ -6,9 +6,11 @@ import {
   addEmployee,
   addEmployeeFailure,
   addEmployeeSuccess,
+  deleteEmployee,
+  deleteEmployeeFailure,
+  deleteEmployeeSuccess,
 } from './employee.actions';
 import { EmployeeService } from './employee.service';
-import { Employee } from './employee.model';
 
 @Injectable()
 export class EmployeeEffects {
@@ -34,5 +36,17 @@ export class EmployeeEffects {
         )
       )
     )
+  );
+  deleteEmployees$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteEmployee),
+      mergeMap(action =>
+        this.employeeService.deleteEmployee(action.id).pipe(
+          map(() => deleteEmployeeSuccess({ id: action.id })),
+          catchError(error => of(deleteEmployeeFailure({ error: error.message || 'unknown error' })))
+        )
+      )
+    ),
+    {dispatch:false}
   );
 }

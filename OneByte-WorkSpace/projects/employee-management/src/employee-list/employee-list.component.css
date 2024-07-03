@@ -1,61 +1,42 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #c8ddb8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+.admin {
+  margin-top: 10%;
+  margin-left: 10%;
+  width: 80%;
 }
 
-.employee-list {
-  background-color: #1d2b36;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.employee-table {
   width: 100%;
-  max-width: 600px;
-  color: #ffffff;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #ffffff;
+.employee-table th,
+.employee-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.employee-table th {
+  background-color: #f2f2f2;
+  text-align: left;
 }
 
-li {
-  background-color: #2a3a48;
-  margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.employee-table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-.employee-info {
-  font-size: 14px;
-  line-height: 1.5;
+.employee-table tr:hover {
+  background-color: #ddd;
 }
 
 .delete-button {
-  padding: 5px 10px;
-  border-radius: 4px;
+  background-color: #ff4d4d;
+  color: white;
   border: none;
-  background-color: #e74c3c;
-  color: #ffffff;
+  padding: 5px 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .delete-button:hover {
-  background-color: #c0392b;
+  background-color: #ff1a1a;
 }

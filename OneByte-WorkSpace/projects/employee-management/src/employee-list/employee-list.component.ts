@@ -4,9 +4,17 @@ import { Employee } from '../app/state/employee.model';
 import { Store, select } from '@ngrx/store';
 import { EmployeeState } from '../app/state/employee.reducer';
 import { selectAllEmployees } from '../app/state/employee.selectors';
-import { deleteEmployeeSuccess, setEmployees } from '../app/state/employee.actions';
+import {
+  deleteEmployee,
+  deleteEmployeeSuccess,
+  setEmployees,
+} from '../app/state/employee.actions';
 import { EmployeeService } from '../app/state/employee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-employee-list',
@@ -47,20 +55,9 @@ export class EmployeeListComponent implements OnInit {
         });
       }
     });
-
-    // this.employees$ = this.store.pipe(select(selectAllEmployees));
   }
 
-  deleteEmployees() {
-    //   this.employeeService.deleteEmployee(email).subscribe({
-    //     next: (response) => {
-    //       this.store.dispatch(
-    //         deleteEmployeeSuccess({ emailId: response.email })
-    //       );
-    //     },
-    //     error: (err) => {
-    //       console.error('Error deleting employee', err);
-    //     },
-    //   });
+  deleteEmployees(id:number) {
+    this.store.dispatch(deleteEmployee({id}))
   }
 }

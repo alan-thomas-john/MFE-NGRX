@@ -8,7 +8,8 @@ import {
   searchEmployees,
   errorNull,
   employeeNull,
-  setEmployees
+  setEmployees,
+  deleteEmployeeFailure
 } from './employee.actions';
 
 import { Employee } from './employee.model';
@@ -27,6 +28,14 @@ export const initialState: EmployeeState = {
   employees: [],
   searchResults: [],
 };
+// const filterUniqueEmployees = (employees: Employee[]) => {
+//   return employees.reduce((acc: Employee[], curr: Employee) => {
+//     if (!acc.some(emp => emp.id === curr.id)) {
+//       acc.push(curr);
+//     }
+//     return acc;
+//   }, []);
+// };
 
 export const employeeReducer = createReducer(
   initialState,
@@ -58,13 +67,26 @@ export const employeeReducer = createReducer(
     error: null,
   })),
 
-  // for deleting emloyees
+  // // for deleting emloyees
+  // on(deleteEmployeeSuccess, (state, { id }) => ({
+  //   ...state,
+  //   // employees: [...state.employees.filter(employee => employee.id !== id)]
+  // })),
+
   on(deleteEmployeeSuccess, (state, { id }) => ({
     ...state,
-    employees: state.employees.filter(employee => employee.id !== id)
+    employees: state.employees.filter(
+      (employee) => employee.id !== id
+    ),
   })),
 
-  
+  on(deleteEmployeeFailure, (state, { error}) => ({
+    ...state,
+    employeeDetails: null,
+    error:error
+  })),
+
+
 
   on(searchEmployees, (state, { searchTerm }) => {
     const filteredEmployees = state.employees.filter((employee) =>

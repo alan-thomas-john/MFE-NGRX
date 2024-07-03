@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard/employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from './registration/registration-routing.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -33,7 +34,8 @@ import { CommonModule } from '@angular/common';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EmployeeModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent],

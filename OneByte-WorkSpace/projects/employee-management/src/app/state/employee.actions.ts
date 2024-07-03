@@ -31,15 +31,15 @@ export const setEmployees = createAction(
 
 export const deleteEmployeeSuccess = createAction(
   '[Employee] Delete Employee Success',
-  props<{ id: number }>()
+  props<{ id: number}>()
 );
 export const deleteEmployeeFailure = createAction(
   '[Employee] Delete Employee Success',
-  props<{ emailId: string }>()
+  props<{ error: string }>()
 );
 export const deleteEmployee = createAction(
   '[Employee] Delete Employee Success',
-  props<{ id: number }>()
+  props<{  id: number }>()
 );
 
 
