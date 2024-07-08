@@ -1,25 +1,42 @@
+<div class=" bg-blue-50">
+<div class="container mx-auto p-4">
+  <div>
+  <h1 class="text-2xl font-bold mb-4">All Users</h1>
 
-
-<div class="full">
-  <table class="employee-table" *ngIf="employees$ | async as employees">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email ID</th>
-        <th>Position</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let employee of employees">
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.email }}</td>
-        <td>{{ employee.position }}</td>
-        <td>
-          <button (click)="deleteEmployees(employee.id)" class="delete-button">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- Search Bar -->
+  <div class="flex justify-between items-center mb-4">
+    <input
+      type="text"
+      placeholder="Search..."
+      class="border border-gray-300 rounded-lg px-4 py-2  focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <!-- (input)="search($event.target.value)" -->
+  </div>
 </div>
-
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-900" *ngIf="employees$ | async as employees">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3  text-blue-900">Name</th>
+          <th scope="col" class="px-6 py-3  text-blue-900">Email ID</th>
+          <th scope="col" class="px-6 py-3 text-blue-900">Position</th>
+          <th scope="col" class="px-6 py-3 text-blue-900">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees" class="bg-white border-b hover:bg-gray-50 transition-colors">
+          <td class="px-6 py-4">
+            <div class="text-sm font-medium text-gray-900">{{ employee.name }}</div>
+          </td>
+          <td class="px-6 py-4">
+            <div class="text-sm text-gray-500">{{ employee.email }}</div>
+          </td>
+          <td class="px-6 py-4">{{ employee.position }}</td>
+          <td class="px-6 py-4">
+            <button (click)="deleteEmployees(employee.id)" class="text-red-600 hover:text-red-900 transition-colors">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
