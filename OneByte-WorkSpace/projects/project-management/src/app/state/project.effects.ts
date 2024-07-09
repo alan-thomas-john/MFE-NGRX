@@ -4,12 +4,13 @@ import { addProject, addProjectFailure, addProjectSuccess, assignProjectToUsers,
 import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { ProjectService } from "./project.service";
 import { Project } from "./project.model";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class ProjectEffects {
 
   constructor(
-    private actions$: Actions, private projectService: ProjectService
+    private actions$: Actions, private projectService: ProjectService,   private snackBar: MatSnackBar
   ) { }
 
   // loadProjects$ = createEffect(() =>
@@ -64,14 +65,37 @@ export class ProjectEffects {
   assignProjectToUsers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(assignProjectToUsers),
-      mergeMap(({ projectId, userIds }) =>
-        this.projectService.assignProjectToUsers(projectId, userIds).pipe(
-          map(project => assignProjectToUsersSuccess({ project })),
+      mergeMap(action =>
+        this.projectService.assignProjectToUsers(action.projectId, action.userIds).pipe(
+          map(project => assignProjectToUsersSuccess({ project })), // Pass the project payload
           catchError(error => of(assignProjectToUsersFailure({ error })))
         )
-      ),
-      // mergeMap(() => [loadProjects()]) // Reload projects after successful assignment
+      )
     )
+  );
+
+  assignProjectToUsersSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(assignProjectToUsersSuccess),
+      tap(() => {
+        this.snackBar.open('Project assigned successfully', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
+      })
+    ), { dispatch: false }
+  );
+
+  assignProjectToUsersFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(assignProjectToUsersFailure),
+      tap(() => {
+        this.snackBar.open('Error assigning project', 'Close', {
+          duration: 3000,
+          verticalPosition: 'top',
+        });
+      })
+    ), { dispatch: false }
   );
 
 }

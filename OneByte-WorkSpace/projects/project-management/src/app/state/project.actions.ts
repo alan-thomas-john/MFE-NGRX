@@ -40,8 +40,8 @@ export const assignProjectToUsers = createAction(
 );
 
 export const assignProjectToUsersSuccess = createAction(
-  '[Project] Assign Project To Users Success',
-  props<{ project: Project }>()
+  '[Project] Assign Project to Users Success',
+  props<{ project: Project }>() 
 );
 
 export const assignProjectToUsersFailure = createAction(

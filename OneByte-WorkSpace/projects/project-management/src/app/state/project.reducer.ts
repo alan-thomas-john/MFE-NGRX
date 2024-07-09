@@ -52,7 +52,6 @@ export const projectReducer = createReducer(
   })),
   on(assignProjectToUsersFailure, (state, { error }) => ({
     ...state,
-    loading: false,
     error
   }))
 );

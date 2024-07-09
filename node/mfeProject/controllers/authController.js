@@ -19,7 +19,7 @@ const filterUserResponse = (user) => {
         updatedAt: user.updatedAt,
     };
 };
-const getUsers = async (res) => {
+const getUsers = async (req ,res) => {
     try {
         const users = await User.findAll();
         const userResponse=users.map(user=>filterUserResponse(user))
@@ -110,7 +110,7 @@ const deleteEmployee = async (req, res) => {
 };
 
 
-const getProject = async(res) => {
+const getProject = async(req, res) => {
     try {
         const projects = await Project.findAll();
         console.log(projects); // Log the rows to see the user data
