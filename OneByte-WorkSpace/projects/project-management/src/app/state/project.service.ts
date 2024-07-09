@@ -19,4 +19,8 @@ export class ProjectService {
   addProject(project: Project): Observable<Project> {
     return this.http.post<Project>(`${this.apiUrl}/project`, project);
   }
+
+  assignProjectToUsers(projectId: number, userIds: number[]): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/assign`, { projectId, userIds });
+  }
 }

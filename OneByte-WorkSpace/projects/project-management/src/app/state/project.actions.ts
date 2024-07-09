@@ -32,3 +32,19 @@ export const deleteProject = createAction(
   '[Project] Delete Project',
   props<{ projectName: string }>()
 );
+
+///
+export const assignProjectToUsers = createAction(
+  '[Project] Assign Project To Users',
+  props<{ projectId: number; userIds: number[] }>()
+);
+
+export const assignProjectToUsersSuccess = createAction(
+  '[Project] Assign Project To Users Success',
+  props<{ project: Project }>()
+);
+
+export const assignProjectToUsersFailure = createAction(
+  '[Project] Assign Project To Users Failure',
+  props<{ error: any }>()
+);

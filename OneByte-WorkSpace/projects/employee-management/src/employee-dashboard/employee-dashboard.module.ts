@@ -36,7 +36,9 @@ import { EmployeeEffects } from '../app/state/employee.effects';
 
     
     StoreModule.forFeature('employee',employeeReducer),
-    EffectsModule.forFeature([EmployeeEffects])
+    EffectsModule.forFeature([EmployeeEffects]),
+    //StoreModule.forFeature('employees',employeeReducer),
+    // EffectsModule.forRoot([EmployeeEffects])
 
   ],
 

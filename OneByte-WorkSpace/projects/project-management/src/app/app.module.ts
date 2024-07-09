@@ -12,6 +12,8 @@ import { ProjectEffects } from './state/project.effects';
 import { ProjectService } from './state/project.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectDashboardModule } from '../project-dashboard/project-dashboard.module';
+import { employeeReducer } from 'projects/employee-management/src/app/state/employee.reducer';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -29,12 +31,13 @@ import { ProjectDashboardModule } from '../project-dashboard/project-dashboard.m
     ReactiveFormsModule,
     AppRoutingModule,
     ProjectDashboardModule,
-    StoreModule.forRoot({ project: projectReducer }),
-    StoreModule.forRoot({ projectState: projectReducer }),
+    MatSnackBarModule,
+    StoreModule.forRoot({ employees: employeeReducer, projectState: projectReducer}),
+    //StoreModule.forRoot({ projectState: projectReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
-    StoreModule.forFeature('project', projectReducer),
-    EffectsModule.forFeature([ProjectEffects]),
+    // StoreModule.forFeature('project', projectReducer),
+    // EffectsModule.forFeature([ProjectEffects]),
   ],
   providers: [ProjectService],
   bootstrap: [AppComponent]

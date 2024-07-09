@@ -4,12 +4,14 @@ import { ProjectDashboardComponent } from '../project-dashboard/project-dashboar
 import { CommonModule } from '@angular/common';
 import { AddProjectComponent } from '../add-project/add-project.component';
 import { ProjectListComponent } from '../project-list/project-list.component';
+import { ProjectAllocationComponent } from '../project-allocation/project-allocation.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: '/projectdashboard', pathMatch: 'full'},
-  {path:'projectdashboard', component: ProjectDashboardComponent},
-  {path:'projectdashboard/add', component: AddProjectComponent},
-  {path:'projectdashboard/list', component: ProjectListComponent},
+  { path: '', redirectTo: '/projectdashboard', pathMatch: 'full' },
+  { path: 'projectdashboard', component: ProjectDashboardComponent },
+  { path: 'projectdashboard/add', component: AddProjectComponent },
+  { path: 'projectdashboard/list', component: ProjectListComponent },
+  { path: 'projectdashboard/allocation', component: ProjectAllocationComponent },
 
 
 ];

@@ -14,6 +14,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ProjectEffects } from '../app/state/project.effects';
 import { projectReducer } from '../app/state/project.reducer';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
+import { ProjectAllocationComponent } from '../project-allocation/project-allocation.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,11 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
     AddProjectComponent,
     ProjectDashboardComponent,
     ProjectListComponent,
+    ProjectAllocationComponent
   ],
   imports: [
     CommonModule,
+    MatSnackBarModule,
     //BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -33,6 +37,7 @@ import { ConfirmationComponent } from '../confirmation/confirmation.component';
       { path: '', component: ProjectDashboardComponent },
       { path: 'add', component: AddProjectComponent },
       { path: 'list', component: ProjectListComponent },
+      { path: 'allocation', component: ProjectAllocationComponent },
     ]),
     //StoreModule.forRoot({ projectState: projectReducer }),
     StoreModule.forFeature('project', projectReducer),

@@ -26,6 +26,10 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     FormsModule,
     StoreModule.forRoot(employeeReducer),
+    EffectsModule.forRoot([EmployeeEffects]),
+    StoreModule.forFeature('employees',employeeReducer),
+   // EffectsModule.forRoot([EmployeeEffects]),
+
     // StoreModule.forRoot({ employees: employeeReducer }),
     // EffectsModule.forRoot([EmployeeEffects]),
     ReactiveFormsModule,

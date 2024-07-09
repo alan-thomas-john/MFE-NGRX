@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { addProject, addProjectFailure, addProjectSuccess, loadProjects, loadProjectsFailure, loadProjectsSuccess } from "./project.actions";
+import { addProject, addProjectFailure, addProjectSuccess, assignProjectToUsers, assignProjectToUsersFailure, assignProjectToUsersSuccess, loadProjects, loadProjectsFailure, loadProjectsSuccess } from "./project.actions";
 import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { ProjectService } from "./project.service";
 import { Project } from "./project.model";
@@ -36,6 +36,42 @@ export class ProjectEffects {
     )
   );
 
-  
+  //
+  loadProjects$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadProjects),
+      mergeMap(() =>
+        this.projectService.getProjects().pipe(
+          map(projects => loadProjectsSuccess({ projects })),
+          catchError(error => of(loadProjectsFailure({ error })))
+        )
+      )
+    )
+  );
+
+  // assignProjectToUsers$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(assignProjectToUsers),
+  //     mergeMap(({ projectId, userIds }) =>
+  //       this.projectService.assignProjectToUsers(projectId, userIds).pipe(
+  //         map(project => assignProjectToUsersSuccess({ project })),
+  //         catchError(error => of(assignProjectToUsersFailure({ error })))
+  //       )
+  //     )
+  //   )
+  // );
+
+  assignProjectToUsers$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(assignProjectToUsers),
+      mergeMap(({ projectId, userIds }) =>
+        this.projectService.assignProjectToUsers(projectId, userIds).pipe(
+          map(project => assignProjectToUsersSuccess({ project })),
+          catchError(error => of(assignProjectToUsersFailure({ error })))
+        )
+      ),
+      // mergeMap(() => [loadProjects()]) // Reload projects after successful assignment
+    )
+  );
 
 }

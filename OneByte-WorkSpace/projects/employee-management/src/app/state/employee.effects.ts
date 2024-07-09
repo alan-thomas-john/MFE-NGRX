@@ -9,6 +9,9 @@ import {
   deleteEmployee,
   deleteEmployeeFailure,
   deleteEmployeeSuccess,
+  loadEmployees,
+  loadEmployeesFailure,
+  loadEmployeesSuccess,
 } from './employee.actions';
 import { EmployeeService } from './employee.service';
 
@@ -48,5 +51,24 @@ export class EmployeeEffects {
       )
     ),
     {dispatch:false}
+  );
+
+  //
+  loadEmployees$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadEmployees),
+      mergeMap(() =>
+        this.employeeService.getAllEmployees().pipe(
+          map((employees) => {
+            console.log('Employees fetched:', employees); // Debugging log
+            return loadEmployeesSuccess({ employees });
+          }),
+          catchError((error) => {
+            console.error('Error fetching employees:', error); // Debugging log
+            return of(loadEmployeesFailure({ error }));
+          })
+        )
+      )
+    )
   );
 }
