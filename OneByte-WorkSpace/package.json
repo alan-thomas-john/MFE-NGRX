@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
-     "build-css": "npx tailwindcss -i ./src/styles.css -o ./projects/styles.css --watch"
+    "build-css": "npx tailwindcss -i ./src/styles.css -o ./projects/styles.css --watch"
   },
   "private": true,
   "dependencies": {

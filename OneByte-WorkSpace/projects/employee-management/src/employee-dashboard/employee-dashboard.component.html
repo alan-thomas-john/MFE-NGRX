@@ -1,10 +1,29 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<body>
-  <div class="dashboard-container">
-      <h1>Welcome to Employee Dashboard</h1>
-      <div class="button-group">
-          <button (click)="navigateToRegistration()">Registration</button>
-          <button (click)="navigateToEmployeeList()">View Employees</button>
+
+<section class="min-h-screen py-10overflow-hidden m-60 ">
+  <div class="container px-10 mx-auto">
+    <div class="flex flex-wrap -mx-4">
+      <div class="w-full md:w-1/2 px-4 mb-16 md:mb-0">
+        <div class="relative mx-auto md:ml-0 max-w-max">
+          <img src="assets/empdash.jpg" alt="Employee Dashboard">
+        </div>
       </div>
+      <div class="w-full md:w-1/2 px-4 ">
+        <h2 class="mb-12 text-4xl md:text-5xl leading-tight font-bold tracking-tighter">Employee Dashboard</h2>
+        <div class="flex flex-wrap -mx-4 text-center md:text-left">
+          <div class="w-full md:w-1/2 px-4  ">
+            <div class="inline-flex items-center justify-center mb-4 w-12 h-12 text-xl text-white bg-green-500 font-semibold rounded-full">
+              1</div>
+            <h3 class="mb-2 text-xl font-bold" (click)="navigateToRegistration()">Registration</h3>
+          </div>
+          <div class="w-full md:w-1/2 px-4">
+            <div
+              class="inline-flex items-center justify-center mb-4 w-12 h-12 text-xl text-white bg-green-500 font-semibold rounded-full">
+              2</div>
+            <h3 class="mb-2 text-xl font-bold" (click)="navigateToEmployeeList()">View Employees</h3>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</body>
+</section>
+
