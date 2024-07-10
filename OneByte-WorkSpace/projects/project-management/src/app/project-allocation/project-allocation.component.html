@@ -1,0 +1,20 @@
+<div class="form-container">
+  <h1>Assign Employees to Project</h1>
+  <form [formGroup]="form" (ngSubmit)="assignEmployees()">
+    <div class="form-group">
+      <label for="project">Select Project:</label>
+      <select id="project" formControlName="projectId" class="form-control" required>
+        <option *ngFor="let project of projects$ | async" [value]="project.id">{{ project.name }}</option>
+      </select>
+      <div *ngIf="form.get('projectId')?.errors?.['required']" class="text-danger">Project is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="employees">Select Employees:</label>
+      <select id="employees" formControlName="userIds" class="form-control" multiple required>
+        <option *ngFor="let employee of employees$ | async" [value]="employee.id">{{ employee.name }}</option>
+      </select>
+      <div *ngIf="form.get('userIds')?.errors?.['required']" class="text-danger">At least one employee is required.</div>
+    </div>
+    <button type="submit" class="btn primary-btn">Assign</button>
+  </form>
+</div>

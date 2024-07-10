@@ -9,14 +9,19 @@ import {
   deleteEmployee,
   deleteEmployeeFailure,
   deleteEmployeeSuccess,
+  loadEmployees,
+  loadEmployeesFailure,
+  loadEmployeesSuccess,
 } from './employee.actions';
 import { EmployeeService } from './employee.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class EmployeeEffects {
   constructor(
     private actions$: Actions,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private snackbar: MatSnackBar
   ) {}
 
   addEmployee$ = createEffect(() =>
@@ -48,5 +53,33 @@ export class EmployeeEffects {
       )
     ),
     {dispatch:false}
+  );
+
+  //
+  loadEmployees$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadEmployees),
+      mergeMap(() =>
+        this.employeeService.getAllEmployees().pipe(
+          map(employees => loadEmployeesSuccess({ employees })),
+          catchError(error => of(loadEmployeesFailure({ error })))
+        )
+      )
+    )
+  );
+
+  loadEmployeesSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadEmployeesSuccess),
+      tap(({ employees }) => {
+        if (employees.length === 0) {
+          this.snackbar.open('No employees found', 'Close', {
+            duration: 3000,
+            verticalPosition: 'top',
+          });
+        }
+      })
+    ),
+    { dispatch: false }
   );
 }

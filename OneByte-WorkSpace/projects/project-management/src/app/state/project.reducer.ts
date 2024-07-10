@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Project } from "./project.model";
-import { addProject, addProjectFailure, addProjectSuccess, deleteProject, loadProjectsFailure, loadProjectsSuccess } from "./project.actions";
+import { addProject, addProjectFailure, addProjectSuccess, assignProjectToUsersFailure, assignProjectToUsersSuccess, deleteProject, loadProjectsFailure, loadProjectsSuccess } from "./project.actions";
 
 export interface ProjectState {
   projects: Project[];
@@ -43,5 +43,15 @@ export const projectReducer = createReducer(
   on(deleteProject, (state, { projectName }) => ({
     ...state,
     projects: state.projects.filter(project => project.name !== projectName)
+  })),
+
+  ///
+  on(assignProjectToUsersSuccess, (state, { project }) => ({
+    ...state,
+    projects: state.projects.map(p => p.id === project.id ? project : p)
+  })),
+  on(assignProjectToUsersFailure, (state, { error }) => ({
+    ...state,
+    error
   }))
 );

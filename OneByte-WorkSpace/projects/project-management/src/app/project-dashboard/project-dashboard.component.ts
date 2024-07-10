@@ -16,4 +16,7 @@ export class ProjectDashboardComponent {
   navigateToProjectList(){
     this.router.navigate(['projectdashboard/list'])
   }
+  navigateToProjectAllocation(){
+    this.router.navigate(['projectdashboard/allocation'])
+  }
 }

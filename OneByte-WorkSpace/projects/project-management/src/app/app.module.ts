@@ -11,7 +11,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './state/project.effects';
 import { ProjectService } from './state/project.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ProjectDashboardModule } from '../project-dashboard/project-dashboard.module';
+import { ProjectDashboardModule } from './project-dashboard/project-dashboard.module';
+import { employeeReducer } from 'projects/employee-management/src/app/state/employee.reducer';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmployeeEffects } from './state/employee.effects';
 
 
 @NgModule({
@@ -29,12 +33,17 @@ import { ProjectDashboardModule } from '../project-dashboard/project-dashboard.m
     ReactiveFormsModule,
     AppRoutingModule,
     ProjectDashboardModule,
-    StoreModule.forRoot({ project: projectReducer }),
-    StoreModule.forRoot({ projectState: projectReducer }),
+    MatSnackBarModule,
+    StoreModule.forRoot({ employees: employeeReducer, projectState: projectReducer}),
+    EffectsModule.forRoot([EmployeeEffects]),
+    StoreModule.forFeature('employees',employeeReducer),
+    StoreModule.forFeature('projectState',projectReducer),
+    //StoreModule.forRoot({ projectState: projectReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
-    StoreModule.forFeature('project', projectReducer),
-    EffectsModule.forFeature([ProjectEffects]),
+   // EffectsModule.forRoot([]),
+    // StoreModule.forFeature('project', projectReducer),
+    // EffectsModule.forFeature([ProjectEffects]),
+    BrowserAnimationsModule,
   ],
   providers: [ProjectService],
   bootstrap: [AppComponent]

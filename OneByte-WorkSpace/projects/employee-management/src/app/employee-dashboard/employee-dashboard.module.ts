@@ -8,10 +8,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { employeeReducer } from '../app/state/employee.reducer';
+import { employeeReducer } from '../state/employee.reducer';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { EffectsModule } from '@ngrx/effects';
-import { EmployeeEffects } from '../app/state/employee.effects';
+import { EmployeeEffects } from '../state/employee.effects';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,9 @@ import { EmployeeEffects } from '../app/state/employee.effects';
 
     
     StoreModule.forFeature('employee',employeeReducer),
-    EffectsModule.forFeature([EmployeeEffects])
+    EffectsModule.forFeature([EmployeeEffects]),
+    //StoreModule.forFeature('employees',employeeReducer),
+    // EffectsModule.forRoot([EmployeeEffects])
 
   ],
 

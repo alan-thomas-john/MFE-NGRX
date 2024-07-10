@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EmployeeDashboardModule } from '../employee-dashboard/employee-dashboard.module';
+import { EmployeeDashboardModule } from './employee-dashboard/employee-dashboard.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { employeeReducer } from './state/employee.reducer';
@@ -25,7 +25,11 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot(employeeReducer),
+    StoreModule.forRoot({employees: employeeReducer}),
+    EffectsModule.forRoot([EmployeeEffects]),
+    StoreModule.forFeature('employees',employeeReducer),
+   // EffectsModule.forRoot([EmployeeEffects]),
+
     // StoreModule.forRoot({ employees: employeeReducer }),
     // EffectsModule.forRoot([EmployeeEffects]),
     ReactiveFormsModule,

@@ -7,8 +7,8 @@ import { EmployeeEffects } from "./employee.effects";
 @NgModule({
 
   imports:[
-    StoreModule.forFeature('employees',employeeReducer),
-    EffectsModule.forRoot([EmployeeEffects])
+    // StoreModule.forFeature('employees',employeeReducer),
+    // EffectsModule.forRoot([EmployeeEffects])
   ],
 
 }

@@ -9,10 +9,14 @@ import {
   errorNull,
   employeeNull,
   setEmployees,
-  deleteEmployeeFailure
+  deleteEmployeeFailure,
+  loadEmployeesSuccess,
+  loadEmployeesFailure,
+  loadEmployees
 } from './employee.actions';
 
 import { Employee } from './employee.model';
+import { EmployeeService } from './employee.service';
 
 export interface EmployeeState {
   employeeDetails: Employee | null;
@@ -45,6 +49,25 @@ export const employeeReducer = createReducer(
     employees: [...state.employees, employee],
     employeeDetails:employee,
     error: null
+  })),
+
+  on(loadEmployees, (state) => ({
+    ...state,
+    loading: true,
+    error: null
+  })),
+
+  on(loadEmployeesSuccess, (state, { employees }) => ({
+    ...state,
+    employees,
+    loading: false,
+    error: null
+  })),
+
+  on(loadEmployeesFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error
   })),
 
   on(addEmployeeFailure, (state, { error }) => ({

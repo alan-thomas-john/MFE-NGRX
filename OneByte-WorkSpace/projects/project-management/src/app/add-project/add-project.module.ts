@@ -5,8 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AddProjectComponent } from './add-project.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ProjectEffects } from '../app/state/project.effects';
-import { projectReducer } from '../app/state/project.reducer';
+import { ProjectEffects } from '../state/project.effects';
+import { projectReducer } from '../state/project.reducer';
 
 
 

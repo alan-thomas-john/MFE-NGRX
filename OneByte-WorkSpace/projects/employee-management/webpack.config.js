@@ -33,7 +33,7 @@ module.exports = {
          name: "employeeManagement",
         filename: "remoteEntry.js",
         exposes: {
-            './EmployeeDashboardModule': './projects/employee-management/src/employee-dashboard/employee-dashboard.module.ts',
+            './EmployeeDashboardModule': './projects/employee-management/src/app/employee-dashboard/employee-dashboard.module.ts',
             //'./Component': './projects/employee-management/src/app/registration/registration.component.ts'
             // './routes':'./projects/employee-management/src/app/employee-dashboard/'
         },
