@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-import { AuthState, login, logout, selectAuthToken } from 'projects/auth/src/public-api';
+import { AuthService, AuthState, login, logout, selectAuthToken } from 'projects/auth/src/public-api';
 import { select, Store } from '@ngrx/store';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     // private snackBar: MatSnackBar,
     private router: Router,
-    private authService: AuthenticationService,
+    private authService: AuthService,
     private toaster: ToastModule,
     private messageService: MessageService,
     private store: Store<{ auth: AuthState }>
@@ -35,50 +35,22 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Subscribe to the token$ observable to check for successful login
-    // this.token$.subscribe(token => {
-    //   if (token) {
-    //     this.snackBar.open('Login successful!', 'Close', {
-    //       duration: 2000,
-    //     });
-    //     this.router.navigate(['/home']);
-    //   }
-    // });
+    this.token$.subscribe(token => {
+      if (token) {
+        this.showToast1();
+        this.router.navigate(['/home']);
+      }
+    });
   }
 
 
   onSubmit() {
     if (this.loginForm.valid) {
-
-      // const { email, password } = this.loginForm.value;
-      // console.log('Form is valid, dispatching login action:', { email, password });
-      // this.store.dispatch(login({ email, password }));
-
-      this.authService.login(this.loginForm.value).subscribe({
-        next: (response: any) => {
-          // console.log('Login successful', response);
-          // this.snackBar.open('Login successful!', 'Close', {
-          //   duration: 2000,
-          // });
-          this.showToast1();
-          this.router.navigate(['/home']);
-        },
-        error: (error: any) => {
-          console.error('Login failed', error.error.message);
-          // this.snackBar.open(error.error.message, 'Close', {
-          //   duration: 2000,
-          //   horizontalPosition: 'right', // 'start', 'center', 'end', 'left', 'right'
-          //   verticalPosition: 'top',
-          // });
-          this.showError(error);
-        },
-      });
+      const { email, password } = this.loginForm.value;
+      console.log('Form is valid, dispatching login action:', { email, password });
+      this.store.dispatch(login({ email, password }));
     } else {
       this.showToast2();
-      // this.snackBar.open('Form not valid', 'Close', {
-      //   duration: 2000,
-      //   panelClass: ['my-custom-snackbar'],
-      // });
     }
   }
   showToast1() {
@@ -106,8 +78,5 @@ export class LoginComponent implements OnInit {
       detail: 'something went wrong',
     });
   }
-  onLogout() {
-    this.store.dispatch(logout());
-    localStorage.removeItem('authToken');
-  }
+ 
 }
