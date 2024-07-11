@@ -7,13 +7,14 @@ import { EmployeeDashboardModule } from './employee-dashboard/employee-dashboard
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { employeeReducer } from './state/employee.reducer';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EmployeeModule } from './state/employee.module';
 import { EffectsModule, EffectsRootModule } from '@ngrx/effects';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeEffects } from './state/employee.effects';
 import { CommonModule } from '@angular/common';
+import { authInterceptor } from 'projects/auth/src/public-api';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard/employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from './registration/registration-routing.module';
 
@@ -41,7 +42,9 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
   
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

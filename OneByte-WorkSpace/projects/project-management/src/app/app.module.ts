@@ -10,12 +10,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './state/project.effects';
 import { ProjectService } from './state/project.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProjectDashboardModule } from './project-dashboard/project-dashboard.module';
 import { employeeReducer } from 'projects/employee-management/src/app/state/employee.reducer';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeEffects } from './state/employee.effects';
+import { authInterceptor } from 'projects/auth/src/public-api';
 
 
 @NgModule({
@@ -45,7 +46,10 @@ import { EmployeeEffects } from './state/employee.effects';
     // EffectsModule.forFeature([ProjectEffects]),
     BrowserAnimationsModule,
   ],
-  providers: [ProjectService],
+  providers: [
+    ProjectService,
+    {provide: HTTP_INTERCEPTORS, useClass: authInterceptor,multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
