@@ -14,9 +14,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeEffects } from './state/employee.effects';
 import { CommonModule } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard/employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from './registration/registration-routing.module';
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,13 +26,10 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot({employees: employeeReducer}),
+    StoreModule.forRoot({ employees: employeeReducer }),
     EffectsModule.forRoot([EmployeeEffects]),
-    StoreModule.forFeature('employees',employeeReducer),
-   // EffectsModule.forRoot([EmployeeEffects]),
-
-    // StoreModule.forRoot({ employees: employeeReducer }),
-    // EffectsModule.forRoot([EmployeeEffects]),
+    StoreModule.forFeature('employees', employeeReducer),
+    ToastModule,
     ReactiveFormsModule,
     HttpClientModule,
     EmployeeDashboardModule,
@@ -39,9 +37,8 @@ import { CommonModule } from '@angular/common';
     EmployeeModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-  
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

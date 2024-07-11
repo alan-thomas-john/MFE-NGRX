@@ -1,4 +1,25 @@
-body
-{
-  background: red;
+::ng-deep .p-toast {
+  /* Center the toasts on the screen */
+  top: 20px !important;
+  right: 20px !important;
+}
+
+::ng-deep .p-toast-message {
+  @apply bg-green-200 border border-green-500 rounded-lg shadow-md p-4;
+}
+
+::ng-deep .p-toast-message-success .p-toast-summary {
+  @apply text-green-800 font-bold;
+}
+
+::ng-deep .p-toast-message-success .p-toast-detail {
+  @apply text-green-700;
+}
+
+::ng-deep .p-toast-message-warn .p-toast-summary {
+  @apply text-yellow-800 font-bold;
+}
+
+::ng-deep .p-toast-message-warn .p-toast-detail {
+  @apply text-yellow-700;
 }

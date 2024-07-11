@@ -18,12 +18,7 @@ import { projectReducer } from '../state/project.reducer';
     ReactiveFormsModule,
     StoreModule.forFeature('project', projectReducer),
     EffectsModule.forFeature([ProjectEffects]),
-  //   RouterModule.forChild([
-  //     {
-  //       path:'',
-  //       component:AddProjectComponent
-  //     }
-  //   ]),
+  
    ]
 })
 export class AddProjectModule { }

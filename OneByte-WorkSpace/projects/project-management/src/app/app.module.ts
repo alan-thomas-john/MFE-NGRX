@@ -16,6 +16,8 @@ import { employeeReducer } from 'projects/employee-management/src/app/state/empl
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeEffects } from './state/employee.effects';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { EmployeeEffects } from './state/employee.effects';
     ReactiveFormsModule,
     AppRoutingModule,
     ProjectDashboardModule,
-    MatSnackBarModule,
+    ToastModule,
     StoreModule.forRoot({ employees: employeeReducer, projectState: projectReducer}),
     EffectsModule.forRoot([EmployeeEffects]),
     StoreModule.forFeature('employees',employeeReducer),
@@ -45,7 +47,7 @@ import { EmployeeEffects } from './state/employee.effects';
     // EffectsModule.forFeature([ProjectEffects]),
     BrowserAnimationsModule,
   ],
-  providers: [ProjectService],
+  providers: [ProjectService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

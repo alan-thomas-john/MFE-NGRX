@@ -53,7 +53,8 @@ module.exports = {
           "@ngrx/store": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
           "@ngrx/effects": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
           "@ngrx/store-devtools": { singleton: true, strictVersion: true, requiredVersion: '15.4.0' },
-
+          "@tailwindcss": { singleton: true, strictVersion: true, requiredVersion:  "3.4.4"},
+          "@primeng": { singleton: true, strictVersion: true, requiredVersion:  "15.0.0"},
 
           ...sharedMappings.getDescriptors()
         })

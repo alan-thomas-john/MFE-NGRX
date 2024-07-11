@@ -11,19 +11,6 @@ export class AuthenticationService {
 
   public login(request: any) {
     return this.http.post("http://localhost:3000/auth/login", request, { responseType: 'json' })
-    //  .subscribe({
-    //   next:(response:any)=>{
-    //     return response
-    //   },
-    //   error:(error:any)=>{
-    //     console.log(error.error.message);
-        
-    //     return error.error.message
-    //   }
-    // }
-      
-    // );
-
 
 
   }

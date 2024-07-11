@@ -1,3 +1,4 @@
+import { ToastModule } from 'primeng/toast';
 import { NgModule, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectDashboardComponent } from './project-dashboard.component';
@@ -18,6 +19,9 @@ import { ProjectAllocationComponent } from '../project-allocation/project-alloca
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { employeeReducer } from '../state/employee.reducer';
 import { EmployeeEffects } from '../state/employee.effects';
+import { MessageService } from 'primeng/api';
+import { ProjectService } from '../state/project.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,15 +29,17 @@ import { EmployeeEffects } from '../state/employee.effects';
     AddProjectComponent,
     ProjectDashboardComponent,
     ProjectListComponent,
-    ProjectAllocationComponent
+    ProjectAllocationComponent,
   ],
   imports: [
     CommonModule,
     MatSnackBarModule,
+    ToastModule,
     //BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    // BrowserAnimationsModule,
     //AppRoutingModule,
     RouterModule.forChild([
       { path: '', component: ProjectDashboardComponent },
@@ -49,5 +55,6 @@ import { EmployeeEffects } from '../state/employee.effects';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: isDevMode() }),
   ],
   exports: [ProjectDashboardComponent],
+  providers: [ProjectService, MessageService],
 })
 export class ProjectDashboardModule {}

@@ -19,7 +19,8 @@ export class AddProjectComponent implements OnInit{
   addProjectError$!: Observable<any>;
 
 
-  constructor(private fb: FormBuilder,private store: Store<ProjectState>) { 
+
+  constructor(private fb: FormBuilder,private store: Store<ProjectState>) {
     this.addProjectSuccess$ = this.store.select(selectAddProjectSuccess);
     this.addProjectError$ = this.store.select(selectAddProjectError);
   }

@@ -1,0 +1,42 @@
+/* app.component.css or app.component.scss */
+::ng-deep .p-toast {
+  /* Positioning the toasts */
+  top: 20px !important;
+  right: 20px !important;
+}
+
+::ng-deep .p-toast-message-success {
+  @apply bg-green-200 border border-green-500 rounded-lg shadow-md p-4;
+}
+
+::ng-deep .p-toast-message-warn {
+  @apply bg-yellow-200 border border-yellow-500 rounded-lg shadow-md p-4;
+}
+
+::ng-deep .p-toast-message-error {
+  @apply bg-red-200 border border-red-500 rounded-lg shadow-md p-4;
+}
+
+::ng-deep .p-toast-message-success .p-toast-summary {
+  @apply text-green-800 font-bold;
+}
+
+::ng-deep .p-toast-message-success .p-toast-detail {
+  @apply text-green-700;
+}
+
+::ng-deep .p-toast-message-warn .p-toast-summary {
+  @apply text-yellow-800 font-bold;
+}
+
+::ng-deep .p-toast-message-warn .p-toast-detail {
+  @apply text-yellow-700;
+}
+
+::ng-deep .p-toast-message-error .p-toast-summary {
+  @apply text-red-800 font-bold;
+}
+
+::ng-deep .p-toast-message-error .p-toast-detail {
+  @apply text-red-700;
+}

@@ -1,17 +1,56 @@
-<body>
-    <div class="project-list">
-        <h2>Project List</h2>
-        <ul>
-            <li *ngFor="let project of projects$ | async">
-                <span class="project-info">
-                    Project Name: {{ project.name }} <br/>
-                    Frontend: {{ project.front_end }} <br/>
-                    Backend: {{ project.back_end }} <br/>
-                    Start Date: {{ project.start_date }} <br/>
-                    End Date: {{ project.end_date }}
-                </span>
-                <button (click)="deleteProject(project.name)" class="delete-button">Delete</button>
-            </li>
-        </ul>
+<div class="min-h-screen bg-gradient-to-r from-green-50 to-sky-100 flex items-start justify-center ">
+  <div class="container mx-auto p-4">
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold mb-4 mt-5 text-gray-900">All Projects</h1>
+
+      <!-- Search Bar -->
+      <div class="flex justify-between items-center mb-4">
+        <input type="text" placeholder="Search..."
+          class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-md">
+      </div>
     </div>
-</body>
+
+    <!-- Table -->
+    <div class="overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-gray-900">
+        <thead class="text-xs text-gray-900 uppercase bg-gray-50">
+          <tr>
+            <th scope="col" class="px-6 py-3 text-left font-bold"> Project Name</th>
+            <th scope="col" class="px-6 py-3 text-left font-bold">Frontend</th>
+            <th scope="col" class="px-6 py-3 text-left font-bold"> Backend</th>
+            <th scope="col" class="px-6 py-3 text-left font-bold"> Start Date</th>
+            <th scope="col" class="px-6 py-3 text-left font-bold">End Date</th>
+            <th scope="col" class="px-6 py-3 text-left font-bold">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projects$ | async as projects" class="bg-white border-b hover:bg-gray-50 transition-colors">
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm font-medium text-gray-900">{{ project.name }}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm text-gray-500">{{project.front_end }}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm text-gray-500">{{project.back_end }}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm text-gray-500">{{project.start_date }}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm text-gray-500">{{project.end_date }}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+
+              <button (click)="deleteProject(project.name)"
+                class="text-white hover:text-red-900 transition-colors font-bold px-4 py-2 border border-red-600 rounded-md bg-red-500 hover:bg-red-100">
+                Delete
+              </button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

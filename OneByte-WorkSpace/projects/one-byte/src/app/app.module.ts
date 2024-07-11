@@ -15,6 +15,9 @@ import { StoreModule } from '@ngrx/store';
 import { employeeReducer } from 'projects/employee-management/src/app/state/employee.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployeeEffects } from 'projects/employee-management/src/app/state/employee.effects';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ProjectEffects } from 'projects/project-management/src/app/state/project.effects';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -27,16 +30,18 @@ import { EmployeeEffects } from 'projects/employee-management/src/app/state/empl
     MatSnackBarModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ToastModule,
    // StoreModule.forRoot(employeeReducer),
     //EffectsModule.forRoot([]),
     //StoreModule.forFeature('employees', employeeReducer),
     StoreModule.forRoot({ employees: employeeReducer, projectState: projectReducer}),
     //StoreModule.forRoot({ ProjectState:projectReducer }),
     EffectsModule.forRoot([]),
+    EffectsModule.forRoot([ProjectEffects,EmployeeEffects]),
    //EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
