@@ -14,7 +14,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeEffects } from './state/employee.effects';
 import { CommonModule } from '@angular/common';
-import { authInterceptor } from 'projects/auth/src/public-api';
+import { authInterceptor, authReducer } from 'projects/auth/src/public-api';
+import { AuthEffects } from 'projects/auth/src/lib/auth.effects';
 // import { EmployeeDashboardRoutingModule } from './employee-dashboard/employee-dashboard-routing.module';
 // import { RegistrationRoutingModule } from './registration/registration-routing.module';
 
@@ -26,8 +27,9 @@ import { authInterceptor } from 'projects/auth/src/public-api';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot({employees: employeeReducer}),
+    StoreModule.forRoot({employees: employeeReducer,auth: authReducer}),
     EffectsModule.forRoot([EmployeeEffects]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreModule.forFeature('employees',employeeReducer),
    // EffectsModule.forRoot([EmployeeEffects]),
 

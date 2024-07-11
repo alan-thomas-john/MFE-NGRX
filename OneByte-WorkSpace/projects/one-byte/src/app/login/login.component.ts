@@ -55,5 +55,6 @@ export class LoginComponent implements OnInit {
   }
   onLogout() {
     this.store.dispatch(logout());
+    localStorage.removeItem('authToken');
   }
 }

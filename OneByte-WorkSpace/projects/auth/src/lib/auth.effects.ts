@@ -12,15 +12,23 @@ export class AuthEffects{
     login$ = createEffect(() =>
         this.actions$.pipe(
           ofType(login),
-          mergeMap(action => {
-            console.log('Login action received:', action); // Add logging here
-            return this.authService.login(action.email, action.password).pipe(
-              map((response: any) => {
-                console.log('Login API response:', response);
-                return loginSuccess({ token: response.token });
-              }),
+          mergeMap(action =>
+            this.authService.login({ email: action.email, password: action.password }).pipe(
+              map((response: any) => loginSuccess({ token: response.token })),
               catchError(error => of(loginFailure({ error })))
-            );
+            )
+          )
+        )
+      );
+
+      loadTokenFromLocalStorage$ = createEffect(() =>
+        of(localStorage.getItem('authToken')).pipe(
+          map((token: string | null) => {
+            if (token) {
+              return loginSuccess({ token });
+            } else {
+              return { type: '[Auth] No Token Found' };
+            }
           })
         )
       );
